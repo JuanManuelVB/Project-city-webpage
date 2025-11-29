@@ -1,0 +1,24 @@
+Project assignment
+Completion requirements
+The project's objective is to design and implement a web presentation of an imaginary presentation for a selected town/city (your hometown or location of your university). The presentation might contain:
+
+Landing page - initial page to attract the user (tourist, etc.) - composed of photos
+News, events, calendar, etc.
+History of the city/town, popular people born there, etc.
+Selected sightseeing (buildings, nature, industry, attractions, etc.)
+Services (accommodation, restaurants, sections for locals, etc.)
+Contact information, including addresses, institutions (opening hours, etc.)
+... whatever you want
+The presentation should be split into at least 6 documents with a reasonable information architecture. There should be at least:
+
+A global navigation (a main menu remains at the same position for all the pages).
+Fixed header of all the pages (or always visible for single-page design).
+Footer
+Images, at least in some sections.
+You should demonstrate you can implement a multi-column layout (e.g., a menu column, main content, etc.)
+The pages should be implemented in HTML 5, and the maximal use of the semantic elements (header, section, nav, etc.) and the style defined using CSS. The page layout must be defined using CSS (no tables may be used for page layout).
+
+This is a team project. Please set up the teams of 2 or 3 members. All the HTML and CSS code must be the work of the team members. The code may not be shared across the teams. It is not allowed to use any third-party code (such as free templates, CSS frameworks, etc.) However, it is allowed (but not necessary) to use free JavaScript libraries (such as jQuery) and images downloaded from the web.
+
+Presentation
+The project is finished with a presentation of the result (online or personally, depending on the current situation). We will offer several possible dates for the presentation in December. In special cases, individual dates may be arranged (contact me: hynek@vut.cz). The latest deadline is December 10.

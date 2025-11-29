@@ -1,0 +1,99 @@
+<!-- header.html - simple, accessible header for the City of Seville website (EN) -->
+<header class="site-header" role="banner">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="header-inner">
+        <div class="brand">
+            <a href="/" class="logo" aria-label="City of Seville homepage">
+                <!-- SVG file stored at ../img/ — spaces encoded as %20 -->
+                <img src="../img/Logotipo%20Municipal%20Ayuntamiento%20de%20Sevilla.svg" width="100" height="100" alt="" aria-hidden="true" class="logo-image">
+                <span class="site-title">
+                    <strong>City of Seville</strong>
+                    <small class="tagline">Official website</small>
+                </span>
+            </a>
+        </div>
+
+        <!-- Mobile menu toggle (checkbox hack) -->
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-hidden="true">
+        <label class="nav-toggle-label" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="visually-hidden">Toggle navigation</span>
+        </label>
+
+        <nav id="global-navigation" class="main-nav" role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="/" aria-current="page">Home</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/history.html">History</a></li>
+                <li><a href="/attractions.html">Attractions</a></li>
+                <li><a href="/events.html">Events</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <style>
+        :root{
+            --accent:#c62828;
+            --bg:#fff;
+            --text:#222;
+            --muted:#666;
+        }
+        .site-header{
+            background:var(--bg);
+            border-bottom:1px solid #eee;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        .skip-link{
+            position:absolute;
+            left:-999px;
+            top:auto;
+            width:1px;height:1px;overflow:hidden;
+        }
+        .skip-link:focus{
+            left:1rem; top:1rem; width:auto; height:auto; padding:.5rem 1rem; background:#000; color:#fff; z-index:1000;
+        }
+        .header-inner{
+            max-width:1100px;
+            margin:0 auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:1rem;
+            padding:.75rem 1rem;
+        }
+        .brand{display:flex;align-items:center;gap:.75rem}
+        .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--text)}
+        .site-title{line-height:1}
+        .site-title .tagline{display:block;color:var(--muted);font-size:.8rem}
+        /* Nav */
+        .main-nav ul{
+            list-style:none;margin:0;padding:0;display:flex;gap:.5rem;align-items:center;
+        }
+        .main-nav a{
+            display:inline-block;padding:.45rem .65rem;border-radius:.25rem;text-decoration:none;color:var(--text);font-weight:600;
+        }
+        .main-nav a:hover,.main-nav a:focus{background:rgba(0,0,0,.04)}
+        .main-nav a[aria-current="page"]{color:var(--accent)}
+        /* Mobile toggle */
+        .nav-toggle{display:none}
+        .nav-toggle-label{display:none; cursor:pointer; padding:.35rem; border-radius:.25rem}
+        .nav-toggle-label span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0; transition:all .2s}
+        .visually-hidden{position:absolute;left:-9999px}
+        /* Responsive */
+        @media (max-width:800px){
+            .main-nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-top:1px solid #eee;transform-origin:top;transition:transform .18s ease-in-out;overflow:hidden;max-height:0}
+            .main-nav ul{flex-direction:column;gap:0}
+            .main-nav a{padding:1rem}
+            .nav-toggle{display:block}
+            .nav-toggle-label{display:block}
+            .nav-toggle:checked + .nav-toggle-label + .main-nav{max-height:400px}
+            /* keep header-inner layout compact */
+            .header-inner{align-items:flex-start}
+        }
+    </style>
+</header>
