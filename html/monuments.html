@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONUMENTS</title>
+    <link rel="stylesheet" href="../css/monuments.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+   
+    <a href="#monuments-map" class="circular-link" aria-label="Ir al mapa de monumentos">
+        <div class="circular-image-top">
+            <img src="../img/mapa-sevilla.png" alt="Sevilla">
+        </div>
+    </a>
+
+    <header class="header">
+          <h1>Discover the beauty of Seville's monuments!</h1>
+            <p id="slogan"> 
+               And much more...
+            </p>
+    </header>
+
+
+    <section class="discover">
+        <h2>EXPLORE SEVILLE!</h2>
+
+        <!-- CONTENEDOR DONDE SE CREARÁN LAS CARDS -->
+        <div class="cards" id="travelCards"></div>
+    </section>
+
+    <script src="../js/monuments.js"></script>
+
+      <section class="map">
+        <div id="monuments-map" class="map-wrapper">
+            <h3>Here you can find a map!</h3>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1jjLfLN9MLgw3_l5envCtANrG-rY4TgwW" width="100%"
+                height="480" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa de monumentos de Sevilla">
+            </iframe>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

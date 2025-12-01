@@ -1,0 +1,238 @@
+
+
+/* IMAGEN CIRCULAR EN ESQUINA SUPERIOR */
+/* smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* enlace alrededor de la imagen circular */
+.circular-link {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+}
+
+/* opcional: efecto foco accesible */
+.circular-link:focus .circular-image-top,
+.circular-link:hover .circular-image-top {
+    transform: translateY(-2px);
+    transition: transform 180ms ease;
+}
+
+.circular-image-top {
+    position: fixed;
+    top: 80px;
+    right: 140px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 120;
+    background: transparent;
+}
+
+.circular-image-top::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;       
+    height: 160px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-image: url("../img/sevilla.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* menos difuminado */
+    opacity: 0.50;      /* menos intensidad */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.circular-image-top img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    z-index: 2;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    /* eliminado borde blanco para que el halo quede suave */
+}
+
+/* Ajustes responsive (mantener el halo proporcional) */
+@media (max-width: 1024px) {
+    .circular-image-top {
+        right: 100px;
+        width: 200px;
+        height: 200px;
+    }
+    .circular-image-top::before {
+        width: 230px;
+        height: 230px;
+        filter: blur(8px);
+    }
+}
+
+@media (max-width: 768px) {
+    .circular-image-top {
+        right: 20px;
+        width: 100px;
+        height: 100px;
+    }
+    .circular-image-top::before {
+        width: 120px;
+        height: 120px;
+        filter: blur(6px);
+    }
+}
+
+/* DISCOVER SECTION */
+.discover {
+    padding: 80px 60px;
+}
+
+.discover h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card .info {
+    padding: 25px;
+}
+
+.card span {
+    color: #e33838;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card span::before {
+    content: "📍";
+}
+
+.card h3 {
+    margin: 12px 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.link button {
+    background: #ffee6f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: background 0.3s;
+}
+
+.link button:hover {
+    background: #e33838;
+    color: #ffffff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .discover {
+        padding: 40px 20px;
+    }
+
+    .discover h2 {
+        font-size: 32px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .circular-image-top {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* MAP */
+.map-wrapper {
+    max-width: 1150px;
+    margin: 40px auto 80px;
+    padding: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+.map-wrapper h3 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 8px 0 12px;
+    color: #222;
+}
+
+.map-wrapper iframe {
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 480px;
+}
+
+/* responsive: reducir altura en móviles */
+@media (max-width: 768px) {
+    .map-wrapper {
+        margin: 24px 16px;
+        border-radius: 10px;
+        padding: 8px;
+    }
+    .map-wrapper iframe {
+        height: 300px;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HISTORY</title>
+    <link rel="stylesheet" href="../css/history.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <h1>Seville has more than 3000 years of history, and it is one of the oldest cities in Europe.</h1>
+            <p id="slogan">Some of the history...</p>
+        </div>
+    </header>
+
+    <section class="history">
+        <h2>SEVILLE: AN INCOMPARABLE ARTISTIC AND HISTORICAL HERITAGE!</h2>
+
+        <div class="history-content">
+            <div class="timeline" aria-label="Línea del tiempo histórica">
+                <div class="timeline-line" aria-hidden="true"></div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Romans</span>
+                    <div class="timeline-img">
+                        <a href="#" data-title="Romans · Origins" data-desc="Founding and Roman period">
+                            <img src="../img/romans.jpg" alt="Romans">
+                            <span>Origins</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Muslims</span>
+                    <div class="timeline-img">
+                        <a href="#" data-title="Muslims · Ishbiliya" data-desc="Era of Al-Andalus and Ishbiliya">
+                            <img src="../img/musulims.jpg" alt="Musulims">
+                            <span>Ishbiliya</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Christians</span>
+                    <div class="timeline-img">
+                        <a href="#" data-title="Christians · Kingdom of Seville" data-desc="Christian reconquest and growth">
+                            <img src="../img/cristians.jpg" alt="Cristians">
+                            <span>Kingdom of Seville</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Golden Age</span>
+                    <div class="timeline-img">
+                        <a href="#" data-title="Golden Age · XVI–XVII centuries" data-desc="Economic and artistic boom">
+                            <img src="../img/golden_age.jpg" alt="Golden Age">
+                            <span>Centuries XVI y XVII</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Modern Age</span>
+                    <div class="timeline-img">
+                        <a href="#" data-title="Modern Age · Seville now" data-desc="Contemporary Seville">
+                            <img src="../img/modern_age.jpg" alt="Modern Age">
+                            <span>Seville now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="history-image" aria-hidden="true">
+                <img src="../img/history-seville.jpg" alt="Historia de Sevilla">
+            </aside>
+        </div>
+    </section>
+
+    <!-- simple modal used by history.js -->
+    <div id="history-modal" class="history-modal" aria-hidden="true">
+        <div class="history-modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="history-modal-close" aria-label="Cerrar">&times;</button>
+            <h3 id="modal-title"></h3>
+            <p id="modal-desc"></p>
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <script src="../js/history.js"></script>
+</body>
+
+</html>
