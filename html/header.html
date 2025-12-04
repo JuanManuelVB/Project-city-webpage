@@ -1,40 +1,41 @@
-<!-- header.html - simple, accessible header for the City of Seville website (EN) -->
+<!-- header.html - Cabecera limpia y accesible en forma de cápsula translúcida roja -->
 <header class="site-header" role="banner">
-    <a class="skip-link" href="#main">Skip to main content</a>
+    <!-- Enlace para saltar al contenido: visible al enfocar -->
+    <a class="skip-link" href="#main">Saltar al contenido</a>
 
+    <!-- Contenedor en forma de cápsula -->
     <div class="header-inner">
+        <!-- Marca (logo + título). Mantener como bloque independiente -->
         <div class="brand">
-            <a href="/" class="logo" aria-label="City of Seville homepage">
-                <img src="../img/logo.png" id="logoHeader" alt="City of Seville logo" class="logo-image">
-                <span class="site-title">
-                    <strong>City of Seville</strong>
-                    <small class="tagline">Official website</small>
-                </span>
+            <a href="../html/index.html" class="logo" aria-label="Página principal - Ciudad de Sevilla">
+                <img src="../img/logo.png"  alt="Logotipo de la Ciudad de Sevilla" class="logo">
             </a>
+            <span class="site-title">City of Seville<br>Official website</span>
+            
         </div>
 
-        <!-- Mobile menu toggle (checkbox hack) -->
+        <!-- Checkbox + label para controlar el menú móvil (accesible y sin JS) -->
         <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-hidden="true">
         <label class="nav-toggle-label" for="nav-toggle" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span class="visually-hidden">Toggle navigation</span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="visually-hidden">Alternar navegación</span>
         </label>
 
-        <nav id="global-navigation" class="main-nav" role="navigation" aria-label="Main navigation">
+        <!-- Navegación principal -->
+        <nav id="global-navigation" class="main-nav" role="navigation" aria-label="Navegación principal">
             <ul>
-                <li><a href="/" aria-current="page">Home</a></li>
-                <li><a href="/news.html">News</a></li>
-                <li><a href="/history.html">History</a></li>
-                <li><a href="/attractions.html">Attractions</a></li>
-                <li><a href="/events.html">Events</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="../html/index.html" aria-current="page">Inicio</a></li>
+                <li><a href="../html/news.html">Noticias</a></li>
+                <li><a href="../html/history.html">Historia</a></li>
+                <li><a href="../html/monuments.html">Monumentos</a></li>
+                <li><a href="../html/events.html">Eventos</a></li>
+                <li><a href="../html/transport.html">Transporte</a></li>
+                <li><a href="../html/celebrities.html">Personajes</a></li>
+                <li><a href="../html/contact.html">Contacto</a></li>
             </ul>
         </nav>
     </div>
 
-    <!-- header styles moved to css/header.css -->
-    <link rel="stylesheet" href="../css/header.css">
 </header>

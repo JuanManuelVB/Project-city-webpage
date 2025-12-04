@@ -4,6 +4,9 @@
     --bg: #fff;
     --text: #222;
     --muted: #666;
+    /* variables para la cápsula roja */
+    --capsule-bg: rgba(198,40,40,0.15);
+    --capsule-border: rgba(198,40,40,0.18);
 }
 
 .site-header{
@@ -31,24 +34,20 @@
     z-index: 1000;
 }
 
-.header-inner{
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: .75rem 1rem;
-    /* Red translucent background (lower opacity allows video to show), thin red border and very rounded corners */
-    background: rgba(198,40,40,0.15); /* adjust alpha (0.0 - 1.0) to control translucency */
-    border: 1px solid rgba(198,40,40,0);
-    border-radius: 9999px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    color: #fff;
-}
+/* .header-inner original block removed to avoid duplication.
+   The active .header-inner implementation (Opción A) appears below
+   and makes the capsule 'abrace' el contenido usando inline-flex. */
 
 .brand{display:flex;align-items:center;gap:.75rem}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit}
+.logo{
+  display: block;
+  max-height: 40px;      /* Ajusta según tu diseño */
+  width: auto;
+  align-self: center;
+  /*padding superior*/
+  padding-top: 0.5rem;
+  height: auto;
+}
 .site-title{line-height:1}
 .site-title .tagline{display:block;color:rgba(255,255,255,0.9);font-size:.8rem}
 
@@ -62,6 +61,34 @@
     color: #fff;
 }
 
+/* --- Opción A: la cápsula abraza el contenido (inline-flex) --- */
+/* Centrar la cápsula usando text-align del contenedor */
+.site-header{ text-align:center }
+
+/* Forzar que la cápsula sea del tamaño del contenido (no limitada por max-width) */
+.header-inner{
+     display:inline-flex !important;
+     max-width:none !important;
+     margin:.6rem auto !important;
+     padding:.6rem 1rem !important;
+     justify-content:center !important;
+     align-items:center !important;
+    /* fondo rojo translúcido en forma de cápsula */
+    background: rgba(198,40,40,0.15) !important;
+    border: 1px solid rgba(198,40,40,0.18) !important;
+     border-radius:9999px !important;
+     box-shadow:0 6px 20px rgba(0,0,0,0.08) !important;
+     color:#fff !important;
+     position:relative;
+     flex-wrap:wrap;
+}
+
+/* Evitar que brand o nav se estiren: medirán su contenido */
+.brand, .main-nav{flex:0 0 auto}
+.main-nav{display:flex;gap:.5rem;align-items:center}
+
+/* En pantallas intermedias y móviles, las reglas existentes seguirán hacer que
+    la navegación baje debajo del brand (breakpoints ya definidos). */
 .main-nav a{
     display:inline-block;
     padding:.45rem .65rem;
