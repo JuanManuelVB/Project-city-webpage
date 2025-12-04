@@ -8,76 +8,75 @@ const monumentsData = [
     {
         title: "Cathedral of Seville (+ La Giralda)",
         location: "Plaza del Triunfo",
-        img: "../img/Seville_Cathedral.jpg",
+        img: "../img/monuments/Seville_Cathedral.jpg",
         url: "https://www.catedraldesevilla.es/en/"
     },
     {
         title: "Alcázar Palace",
         location: "Patio de Banderas",
-        img: "../img/alcazar.jpg",
+        img: "../img/monuments/alcazar.jpg",
         url: "https://www.alcazarsevilla.org/en/"
     },
     {
         title: "Torre del Oro",
         location: "Paseo de Cristóbal Colón",
-        img: "../img/torre-del-oro.jpg",
+        img: "../img/monuments/torre-del-oro.jpg",
         url: "https://en.andalucia.org/listing/torre-del-oro-naval-museum/16418101/"
     },
     {
         title: "Plaza de España",
         location: "Parque de María Luisa",
-        img: "../img/plaza-españa.jpg",
+        img: "../img/monuments/plaza-españa.jpg",
         url: "https://www.andalucia.org/listing/plaza-de-espa%C3%B1a/16337102/"
     },
     {
         title: "Sevilla University",
         location: "Calle San Fernando",
-        img: "../img/universidad-sevilla.jpg",
+        img: "../img/monuments/universidad-sevilla.jpg",
         url: "https://www.us.es/"
     },
     {
         title: "Triana District",
         location: "Barrio de Triana",
-        img: "../img/triana.jpg",
+        img: "../img/monuments/triana.jpg",
         url: "https://www.visitasevilla.es/en/areas/triana"
     },
     {
         title: "Andalusian Parliament",
         location: "Plaza del Parlamento",
-        img: "../img/parlamento.jpg",
+        img: "../img/monuments/parlamento.jpg",
         url: "https://www.parlamentodeandalucia.es/servicio-de-publicaciones-oficiales"
     },
     {
         title: "Archivo de Indias",
         location: "Plaza del Triunfo",
-        img: "../img/archivo-indias.jpg",
+        img: "../img/monuments/archivo-indias.jpg",
         url: "https://www.mecd.gob.es/cultura-mecd/areas-cultura/archivos/mc/archivos/aid/index.html"
     },
     {
         title: "Casa de Pilatos",
         location: "Plaza de Pilatos",
-        img: "../img/pilatos.jpg",
+        img: "../img/monuments/pilatos.jpg",
         url: "https://www.casadepilatos.es/en/"
     },
     {
         title: "Metropol Parasol",
         location: "Plaza de la Encarnación",
-        img: "../img/setas-sevilla.jpg",
+        img: "../img/monuments/setas-sevilla.jpg",
         url: "https://setasdesevilla.com/en/"
     },
     {
         title: "Italica ruins",
         location: "Santiponce",
-        img: "../img/italica.jpg",
+        img: "../img/monuments/italica.jpg",
         url: "https://www.italicasevilla.org/en/"
     },
     {
         title: "Arch of Macarena",
         location: "Calle San Luis",
-        img: "../img/arco-macarena.jpg",
+        img: "../img/monuments/arco-macarena.jpg",
         url: "https://www.andalucia.org/listing/arco-de-la-macarena/24931102/"
     }
-
 ];
 
 function createCard(item) {

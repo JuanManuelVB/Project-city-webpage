@@ -1,6 +1,6 @@
 
 :root {
-    --monuments-bg: url("../img/monuments-bg.jpg"); 
+    --monuments-bg: url("../img/monuments/monuments-bg.jpg"); 
 }
 
 body::before {
@@ -101,7 +101,6 @@ html {
 .discover {
     padding: 80px 60px;
 }
-
 
 
 .cards {
