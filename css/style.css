@@ -66,6 +66,7 @@ main{
     position:relative;
     z-index:1;
 }
+
 /* Logo sizing: ensure header logo fits and is not oversized */
 #logoHeader,
 .logo-image{
@@ -89,7 +90,6 @@ main{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: georgia, serif;
 }
 
 body{
