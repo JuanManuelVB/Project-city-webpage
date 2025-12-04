@@ -1,7 +1,7 @@
 /* Base */
 :root {
-    --accent: #d92e2e;
-    --history-bg: url("../img/history/");
+    --history-bg: url("../img/history/historia-sevilla.jpg");
+    z-index: -1;
 }
 
 * {
@@ -16,7 +16,6 @@ body::before {
     padding: 40px 60px 80px;
 }
 
-
 @media (max-width: 1024px) {
     .header { padding: 48px 36px; flex-direction: column; align-items: flex-start; }
     .header-left h1 { font-size: 46px; }
@@ -27,7 +26,6 @@ body::before {
     .header { padding: 28px 20px; }
     .header-left h1 { font-size: 34px; }
 }
-
 
 /* HISTORY SECTION */
 .history-section {
@@ -51,12 +49,14 @@ body::before {
     height: 100%;
     background: linear-gradient(180deg, var(--accent), rgba(250, 122, 32, 0.3));
     border-radius: 2px;
-    z-index: 1;
+    z-index: 0;
+    pointer-events: none;
+    top: 0;
 }
 
 .timeline-items {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* TIMELINE ITEM */
@@ -66,15 +66,15 @@ body::before {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.6s ease-out forwards;
+    position: relative;
+    z-index: 2;
 }
-
 
 .timeline-item:nth-child(odd) {
     flex-direction: row;
     justify-content: flex-end;
     padding-right: 52%;
 }
-
 
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
@@ -89,8 +89,10 @@ body::before {
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 480px;                       
+    max-width: 480px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-content:hover {
@@ -177,7 +179,6 @@ body::before {
     }
 }
 
-
 /* RESPONSIVE */
 @media (max-width: 1024px) {
     .history-section {
@@ -204,11 +205,6 @@ body::before {
     .timeline-content {
         max-width: 100%;
         padding: 28px;  
-    }
-
-        .timeline-content {
-        max-width: 100%;
-        padding: 28px;                     
     }
 
     .timeline-content h3 {

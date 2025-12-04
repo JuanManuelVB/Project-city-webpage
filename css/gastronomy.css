@@ -1,0 +1,136 @@
+
+:root {
+    --gastronomy-bg: url("../img/gastronomy/sevilla-food.jpg");
+}
+
+body::before {
+    background-image: var(--gastronomy-bg);
+}
+
+
+/* SECTION CONTAINER */
+.gastronomy-section {
+    padding: 60px 60px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* DISHES GRID */
+.dishes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* DISH CARD */
+.dish-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dish-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 36px rgba(255, 228, 138, 0.356);
+}
+
+.dish-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.dish-content {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.dish-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.dish-description {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.dish-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--price-color);
+    margin: 8px 0 0;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .dishes-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .gastronomy-section {
+        padding: 40px 36px 60px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .slogan {
+        font-size: 18px;
+        margin-bottom: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dishes-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gastronomy-section {
+        padding: 24px 20px 48px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .slogan {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .dish-image {
+        height: 180px;
+    }
+
+    .dish-content {
+        padding: 20px 16px;
+    }
+}
