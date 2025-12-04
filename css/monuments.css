@@ -1,4 +1,11 @@
 
+:root {
+    --monuments-bg: url("../img/monuments-bg.jpg"); 
+}
+
+body::before {
+    background-image: var(--monuments-bg);
+}
 
 /* IMAGEN CIRCULAR EN ESQUINA SUPERIOR */
 /* smooth scroll */
@@ -95,12 +102,7 @@ html {
     padding: 80px 60px;
 }
 
-.discover h2 {
-    font-size: 42px;
-    font-weight: 800;
-    margin-bottom: 50px;
-    text-align: center;
-}
+
 
 .cards {
     display: grid;
@@ -176,28 +178,7 @@ html {
     }
 }
 
-@media (max-width: 768px) {
-    header {
-        padding: 15px 20px;
-    }
 
-    .discover {
-        padding: 40px 20px;
-    }
-
-    .discover h2 {
-        font-size: 32px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .circular-image-top {
-        width: 100px;
-        height: 100px;
-    }
-}
 
 /* MAP */
 .map-wrapper {
@@ -234,5 +215,34 @@ html {
     }
     .map-wrapper iframe {
         height: 300px;
+    }
+}
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .discover {
+        padding: 40px 20px;
+    }
+
+    .discover h2 {
+        font-size: 32px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .circular-image-top {
+        width: 100px;
+        height: 100px;
     }
 }

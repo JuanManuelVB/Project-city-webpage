@@ -1,84 +1,109 @@
-function createCard(item) {
-    return `
-        <div class="card">
-            <img src="${item.img}" alt="${item.title}">
-            <div class="info">
-                <span>${item.location}</span>
-                <h3>${item.title}</h3>
-                <div class="link">
-                    <button class="view-btn" data-url="${item.url}">View Details ➜</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function renderCards() {
-    const container = document.getElementById("travelCards");
-    if (container) {
-        container.innerHTML = monumentsData.map(createCard).join("");
-
-        container.addEventListener('click', (e) => {
-            const btn = e.target.closest('.view-btn');
-            if (!btn) return;
-            const url = btn.dataset.url;
-            if (url) window.open(url, '_blank', 'noopener');
-        });
-    }
-}
-
-document.addEventListener("DOMContentLoaded", renderCards);
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Open modal when clicking any timeline link
-    const modal = document.getElementById('history-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDesc = document.getElementById('modal-desc');
-    const modalImg = document.getElementById('modal-img');
-    const closeBtn = modal.querySelector('.history-modal-close');
+    const timelineData = [
+        {
+            period: "Romans",
+            title: "Origins of Seville",
+            description: "Seville was founded by the Romans as Hispalis. It became an important port city and was one of the most prosperous cities in Roman Hispania.",
+            image: null
+        },
+        {
+            period: "Muslims",
+            title: "Ishbiliya",
+            description: "During the Islamic period (711-1248), Seville flourished as the capital of a taifa kingdom. The city was known as Ishbiliya and became a center of arts and culture.",
+            image: null
+        },
+        {
+            period: "",
+            title: "Image of Ancient Seville",
+            description: "",
+            image: "../img/historia1.jpg"
+        },
+        {
+            period: "Christians",
+            title: "Kingdom of Seville",
+            description: "After the Christian Reconquest in 1248, Seville became the capital of the Kingdom of Seville. The city grew rapidly and became a major center of Christian Spain.",
+            image: null
+        },
+        {
+            period: "Golden Age",
+            title: "XVI–XVII Centuries",
+            description: "Seville experienced its golden age during the 16th and 17th centuries. It was the wealthiest city in Spain due to its monopoly on trade with the Americas.",
+            image: null
+        },
+        {
+            period: "",
+            title: "Image of Seville's Golden Age",
+            description: "",
+            image: "../img/historia2.jpg"
+        },
+        {
+            period: "Modern Era",
+            title: "Contemporary Seville",
+            description: "In modern times, Seville has evolved into a vibrant cultural and economic center. It hosted the 1992 World's Fair and continues to attract visitors from around the world.",
+            image: null
+        },
+        {
+            period: "Today",
+            title: "Vibrant City Life",
+            description: "Seville today is a dynamic city that preserves its rich heritage while embracing modernity. It remains a major tourist destination and cultural hub in southern Spain.",
+            image: null
+        }, {
+            period: "",
+            title: "Image of Seville nowadays",
+            description: "",
+            image: "../img/sevilla-pan.jpg"
+        },
+    ];
 
-    function openModal(title, desc, imgSrc, imgAlt) {
-        modalTitle.textContent = title || '';
-        modalDesc.textContent = desc || '';
-        if (imgSrc) {
-            modalImg.src = imgSrc;
-            modalImg.alt = imgAlt || title;
-            modalImg.style.display = 'block';
-        } else {
-            modalImg.style.display = 'none';
-        }
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden', 'false');
+    const container = document.getElementById('timelineItems');
+    if (!container) return;
+
+    function renderTimeline() {
+        let html = '';
+
+        timelineData.forEach((item, index) => {
+            if (item.image) {
+                // Render image
+                html += `
+                    <div class="timeline-image" data-index="${index}">
+                        <img src="${item.image}" alt="Seville history">
+                    </div>
+                `;
+            } else {
+                // Render text item
+                html += `
+                    <div class="timeline-item" data-index="${index}">
+                        <div class="timeline-content">
+                            <h3>${item.period}</h3>
+                            <h4>${item.title}</h4>
+                            <p>${item.description}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        container.innerHTML = html;
     }
 
-    function closeModal() {
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden', 'true');
-    }
+    renderTimeline();
 
-    // delegate clicks on timeline links
-    document.querySelectorAll('.timeline-img a').forEach(a => {
-        a.addEventListener('click', (e) => {
-            e.preventDefault();
-            const title = a.dataset.title || '';
-            const desc = a.dataset.desc || '';
-            const img = a.querySelector('img')?.src || '';
-            openModal(title, desc, img, a.querySelector('img')?.alt || '');
+    // Intersection Observer para scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
         });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    document.querySelectorAll('.timeline-item, .timeline-image').forEach(el => {
+        observer.observe(el);
     });
 
-    // reveal animation on scroll
-    const items = document.querySelectorAll('.timeline-item');
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(ent => {
-            if (ent.isIntersecting) ent.target.classList.add('in-view');
-        });
-    }, { threshold: 0.15 });
-
-    items.forEach(i => io.observe(i));
+   
 });
