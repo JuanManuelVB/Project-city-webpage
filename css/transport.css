@@ -1,47 +1,24 @@
 
 :root {
-    --transport-bg: url("../img/sevilla-pan.jpg"); 
+    --transport-bg: url("../img/history/"); 
 }
 
 body::before {
     background-image: var(--transport-bg);
 }
 
+.slogan {
+    color: #141414a1;
+    font-size: 24px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
 .features-container,
 .feature-card {
     position: relative;
     z-index: 1;
-}
-
-/* HEADER */
-.header {
-    background: var(--bg);
-    padding: 80px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #b90303;
-} 
-
-.header-left {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 600px;
-}
-
-.header-left h1 {
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1;
-    margin: 0;
-}
-
-#slogan {
-    color: #000000a1;
-    font-size: 16px;
-    margin: 8px 0 0;
 }
 
 /* FEATURES SECTION */

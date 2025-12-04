@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             period: "",
             title: "Image of Ancient Seville",
             description: "",
-            image: "../img/historia1.jpg"
+            image: "../img/history/historia1.jpg"
         },
         {
             period: "Christians",
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             period: "",
             title: "Image of Seville's Golden Age",
             description: "",
-            image: "../img/historia2.jpg"
+            image: "../img/history/historia2.jpg"
         },
         {
             period: "Modern Era",
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             period: "",
             title: "Image of Seville nowadays",
             description: "",
-            image: "../img/sevilla-pan.jpg"
+            image: "../img/history/sevilla-pan.jpg"
         },
     ];
 

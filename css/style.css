@@ -100,42 +100,31 @@ body{
     -webkit-font-smoothing:antialiased;
 }
 
-h2 {
+.title-page {
+     background: transparent;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     font-size: 42px;
-    font-weight: 800;
+    font-weight: bold;
+    font-family: georgia, serif;
     margin-bottom: 50px;
     text-align: center;
     color: #820d0d
-}
+} 
 
-/* HEADER */
-header {
-    background: transparent;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: small;
-    font-weight: bold;
-    font-family: georgia, serif;
-    color: #0f0f0f;
-}
-
-header h1 {
+.subtitle-page {
     font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    color: rgb(43, 1, 1)
 }
 
-header p {
-    color: #5b0000b0;
-    font-size: 14px;
+.slogan {
+    color: #141414a1;
+    font-size: 20px;
+    margin-bottom: 12px;
 }
-
-.header-left h1{
-    font-size:24px;margin:0 0 8px
-}
-
-
-
-/*hola*/
