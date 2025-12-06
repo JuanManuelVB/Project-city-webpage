@@ -1,96 +1,153 @@
-    const transportData = [
-        {
-            title: "Bus network",
-            desc: "Day and night bus service, with a single ticket costing 1.4€",
-            img: "../img/transport/bus-sevilla.jpg",
-            detailText: "Sevilla's bus network covers the entire city with extensive routes operating from 6:00 AM to 11:00 PM (starting later on holidays) with varying frequencies of between 15 and 20 minutes depending on the line and time of day. In addition to single tickets, multi-trip or tourist tickets are available for purchase",
-            detailImg: "../img/transport/map-bus-sevilla.png",
-            officialUrl: "https://www.tussam.es/"
-        },
-        {
-            title: "Tram lines",
-            desc: "The tram has a single line (Metrocentro (T1)) that you can use with a 1.4€ ticket",
-            img: "../img/transport/tram-sevilla.png",
-            detailText: "It travels through the city's historic center, connecting Plaza Nueva with San Bernardo. The route is 2 kilometers long and takes approximately 19 minutes round trip. For the tickets, you can find the same options as for the bus.",
-            detailImg: "../img/transport/seville-tram-map.jpg",
-            officialUrl: "https://www.tussam.es/es/paginas/linea-t1"
-        },
-        {
-            title: "Metro connection",
-            desc: "A single line divided into 3 sections. The price is 1.35€/ticket",
-            img: "../img/transport/metro-sevilla.png",
-            detailText: "TIt connects the city with municipalities such as Mairena del Aljarafe and Dos Hermanas via 21 stations. The price of the Seville metro varies depending on the number of stops on the route and whether you use a single ticket or a transport card.",
-            detailImg: "../img/transport/map-metro-sevilla.png",
-            officialUrl: "https://www.consorcio-transporte-sevilla.es/"
-        },
-        {
-            title: "Sevici",
-            desc: "Public bike-rental service for €2.59 per day",
-            img: "../img/transport/sevici.png",
-            detailText: "Available at over 260 stations throughout the city, and can be used via the <a href='https://play.google.com/store/apps/details?id=com.jcdecaux.vls.seville&hl=es_EC'>Sevici mobile app on Google Play</a>. First 30 minutes are free!",
-            detailImg: "../img/transport/map-sevici.png",
-            officialUrl: "https://www.sevici.es/"
-        }
-    ];
+/* gastronomy.js - clean renderer and interactions for gastronomy cards
+     - Renders cards from data (window.GASTRONOMY_DATA or DEFAULT_GASTRONOMY_DATA)
+     - Attaches accessible interactions (hover, focus, click, keyboard)
+*/
 
-document.addEventListener('DOMContentLoaded', () => {
+const DEFAULT_GASTRONOMY_DATA = [
+    {
+        id: 'tortilla',
+        title: 'Spanish Omelette (Tortilla de Patatas)',
+        img: '/img/gastronomy/Tortilla-de-Patata-scaled.jpg',
+        alt: 'Spanish omelette with potatoes',
+        excerpt: 'A classic Spanish omelette: tender inside and golden outside.',
+        ingredients: 'Potatoes, eggs, onion (optional), olive oil, salt.',
+        preparation: 'Fry sliced potatoes over medium heat, mix with beaten eggs and cook in a pan until set to the desired doneness.'
+    },
+    {
+        id: 'salmorejo',
+        title: 'Salmorejo',
+        img: '/img/gastronomy/images (3).jpeg',
+        alt: 'Bowl of salmorejo (thick cold tomato soup)',
+        excerpt: 'A creamy cold tomato purée from Andalusia, thicker than gazpacho and traditionally garnished with ham and egg.',
+        ingredients: 'Tomatoes, stale bread, olive oil, garlic, salt, hard-boiled egg and cured ham for garnish.',
+        preparation: 'Blend ripe tomatoes with soaked bread, garlic and olive oil until smooth, chill and serve topped with chopped egg and ham.'
+    },
+    {
+        id: 'gazpacho',
+        title: 'Gazpacho',
+        img: '/img/gastronomy/gazpacho.jpg',
+        alt: 'Refreshing gazpacho soup',
+        excerpt: 'A refreshing cold tomato and vegetable soup, perfect for hot Andalusian summers.',
+        ingredients: 'Tomatoes, cucumber, green pepper, onion, garlic, olive oil, vinegar, stale bread, salt.',
+        preparation: 'Blend all vegetables with soaked bread, olive oil and vinegar until smooth, chill well and serve cold.'
+    },
+    {
+        id: 'croquetas-jamon',
+        title: 'Croquetas Cremosas de Jamón',
+        img: '/img/gastronomy/croqueta.jpg',
+        alt: 'Crocantes croquetas rellenas de jamón y bechamel cremosa',
+        excerpt: 'Crujiente por fuera y con un interior sedoso impregnado de jamón.',
+        ingredients: 'Jamón serrano, mantequilla, harina, leche, nuez moscada, huevo, pan rallado, aceite.',
+        preparation: 'Hacer una bechamel espesa con jamón picado, enfriar, formar croquetas, rebozar y freír hasta dorar.'
+    },
+    {
+        id: 'pescaito-frito',
+        title: 'Fried Small Fish (Pescaito Frito)',
+        img: '/img/gastronomy/Pescaito-Frito.jpg',
+        alt: 'Assortment of small fried fish',
+        excerpt: 'An Andalusian staple: lightly battered and fried small fish, crispy and flavorful.',
+        ingredients: 'Assorted small fish (anchovies, Mediterranean smelts), flour, salt, olive oil, lemon wedges.',
+        preparation: 'Dust small fish in seasoned flour and deep-fry in hot oil until crisp; drain and serve with lemon.'
+    },
+    {
+        id: 'rabo-de-toro',
+        title: "Oxtail Stew (Rabo de Toro)",
+        img: '/img/gastronomy/rabo-de-toro-a-la-cordobesa.jpg',
+        alt: 'Rich oxtail stew',
+        excerpt: 'A slow-cooked, hearty oxtail stew with rich, concentrated flavors typical of southern Spain.',
+        ingredients: 'Oxtail, onions, carrots, garlic, red wine, beef stock, tomatoes, bay leaf, olive oil, salt, pepper.',
+        preparation: 'Brown oxtail, sauté vegetables, deglaze with wine, then simmer slowly in stock and tomatoes until meat is tender and sauce is thick.'
+    },
+    {
+        id: 'serranito',
+        title: 'Serranito Sandwich',
+        img: '/img/gastronomy/bocadillo-serranito.jpg',
+        alt: 'Serranito sandwich with grilled pork and peppers',
+        excerpt: 'A popular Sevillian sandwich featuring grilled pork or chicken, cured ham and roasted pepper.',
+        ingredients: 'Bread roll, grilled pork or chicken, cured ham (jamón), roasted green pepper, tomato, olive oil, salt.',
+        preparation: 'Assemble grilled meat, ham and roasted pepper in a roll with a drizzle of olive oil and a slice of tomato; serve warm.'
+    }
+];
 
-    const container = document.getElementById('featuresContainer');
-    if (!container) return;
+// Use template-based renderer to preserve the original HTML structure
+function escapeHTML(str){
+    if(typeof str !== 'string') return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 
-    function createCard(item) {
-        return `
-            <article class="feature-card">
-                <button class="close-btn" aria-label="Cerrar">&times;</button>
-                <div class="feature-img">
-                    <img src="${item.img}" alt="${item.title}">
-                </div>
-                <h3>${item.title}</h3>
-                <p>${item.desc}</p>
-                <div class="feature-expanded-info">
-                    <div class="expanded-content">
-                        <p class="detail-text">${item.detailText}</p>
-                        <img src="${item.detailImg}" alt="${item.title} detail" class="detail-img">
-                        <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn-official">
-                            Visit Official Website →
-                        </a>
+function renderCardsWithTemplate(container, data){
+    let html = '';
+    data.forEach(item => {
+        const title = escapeHTML(item.title || '');
+        const img = escapeHTML(item.img || '');
+        const alt = escapeHTML(item.alt || item.title || '');
+        const excerpt = escapeHTML(item.excerpt || '');
+        const ingredients = escapeHTML(item.ingredients || '');
+        const preparation = escapeHTML(item.preparation || '');
+
+        html += `
+            <div class="food-card" role="button" tabindex="0" aria-expanded="false">
+                <img src="${img}" alt="${alt}">
+                <div class="card-content">
+                    <h3 class="card-title">${title}</h3>
+                    <div class="more-hint">Pasa el ratón o pulsa para ver más</div>
+                    <div class="card-details" aria-hidden="true">
+                        <p>${excerpt}</p>
+                        <p><strong>Ingredientes:</strong> ${ingredients}</p>
+                        <p><strong>Preparación breve:</strong> ${preparation}</p>
                     </div>
                 </div>
-            </article>
-        `;
-    }
-
-    container.innerHTML = transportData.map(createCard).join('');
-
-    // Event delegation: expandir/contraer cards
-    container.addEventListener('click', (e) => {
-        const card = e.target.closest('.feature-card');
-        const closeBtn = e.target.closest('.close-btn');
-
-        if (!card) return;
-
-        // Si clickea en el botón cerrar, contraer
-        if (closeBtn) {
-            e.stopPropagation();
-            card.classList.remove('expanded');
-            return;
-        }
-
-        // Cerrar otras cards expandidas
-        document.querySelectorAll('.feature-card.expanded').forEach(c => {
-            if (c !== card) c.classList.remove('expanded');
-        });
-
-        // Toggle expandida en la actual
-        card.classList.toggle('expanded');
+            </div>`;
     });
 
-    // Cerrar al presionar ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.feature-card.expanded').forEach(c => {
-                c.classList.remove('expanded');
-            });
+    container.innerHTML = html;
+    // Attach interactions to the newly created cards
+    const newCards = container.querySelectorAll('.food-card');
+    newCards.forEach(attachInteractions);
+}
+
+function attachInteractions(card){
+    const details = card.querySelector('.card-details');
+
+    const open = () => {
+        card.setAttribute('aria-expanded','true');
+        if(details) details.setAttribute('aria-hidden','false');
+    };
+    const close = () => {
+        card.setAttribute('aria-expanded','false');
+        if(details) details.setAttribute('aria-hidden','true');
+    };
+    const toggle = () => {
+        const opened = card.getAttribute('aria-expanded') === 'true';
+        if(opened) close(); else open();
+    };
+
+    card.addEventListener('mouseenter', open);
+    card.addEventListener('mouseleave', close);
+    card.addEventListener('focusin', open);
+    card.addEventListener('focusout', close);
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            toggle();
         }
     });
+}
+
+function renderCards(container, data){
+    container.innerHTML = '';
+    data.forEach(item => {
+        const card = createCard(item);
+        attachInteractions(card);
+        container.appendChild(card);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('#foodCardsContainer') || document.querySelector('.cards-list');
+    if(!container) return;
+    const data = (window.GASTRONOMY_DATA && Array.isArray(window.GASTRONOMY_DATA)) ? window.GASTRONOMY_DATA : DEFAULT_GASTRONOMY_DATA;
+    // Use the template renderer to preserve original markup
+    renderCardsWithTemplate(container, data);
 });

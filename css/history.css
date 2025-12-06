@@ -2,7 +2,6 @@
 :root {
     --accent: #d92e2e;
     --history-bg: url("../img/history/historia-sevilla.jpg");
-    --history-bg: url("../img/history/historia-sevilla.jpg");
     z-index: -1;
 }
 
@@ -19,13 +18,13 @@ body::before {
 }
 
 @media (max-width: 1024px) {
-    .header { padding: 48px 36px; flex-direction: column; align-items: flex-start; }
+    .title-page { padding: 48px 36px; flex-direction: column; align-items: flex-start; }
     .header-left h1 { font-size: 46px; }
     .header-left { max-width: 100%; }
 }
 
 @media (max-width: 768px) {
-    .header { padding: 28px 20px; }
+    .title-page { padding: 28px 20px; }
     .header-left h1 { font-size: 34px; }
 }
 
@@ -223,7 +222,7 @@ body::before {
 }
 
 @media (max-width: 768px) {
-    .header {
+    .title-page {
         padding: 40px 20px;
     }
 

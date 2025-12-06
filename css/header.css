@@ -1,152 +1,119 @@
-/* header.css - styles for header fragment */
-:root{
-    --accent: #c62828;
-    --bg: #fff;
-    --text: #222;
-    --muted: #666;
-    /* variables para la cápsula roja */
-    --capsule-bg: rgba(198,40,40,0.15);
-    --capsule-border: rgba(198,40,40,0.18);
+/* header.css - clean, consolidated header styles */
+@font-face {
+  font-family: 'Montecatini Light';
+  src: local('Montecatini Pro Stretto Light'), local('Montecatini-Pro-Stretto-Light'),
+    url('/fonts/montecatiniLight/MontecatiniPro-StrettoLight.woff2') format('woff2'),
+    url('/fonts/montecatiniLight/MontecatiniPro-StrettoLight.woff') format('woff'),
+    url('/fonts/montecatiniLight/MontecatiniPro-StrettoLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
-.site-header{
-    background: transparent; /* allow video behind to show through */
-    border-bottom: none;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+:root {
+  --accent: #c62828;
+  --bg: #fff;
+  --text: #222;
+  --muted: #666;
+  --capsule-bg: rgba(198,40,40,0.15);
+  --capsule-border: rgba(198,40,40,0.18);
 }
 
-.skip-link{
-    position: absolute;
-    left: -999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-.skip-link:focus{
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    padding: .5rem 1rem;
-    background: #000;
-    color: #fff;
-    z-index: 1000;
+/* Base header container */
+.site-header {
+  background: transparent;
+  border-bottom: none;
+  text-align: center;
+  font-family: 'Montecatini Light', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* .header-inner original block removed to avoid duplication.
-   The active .header-inner implementation (Opción A) appears below
-   and makes the capsule 'abrace' el contenido usando inline-flex. */
+/* Header element: fixed on top so it's always visible */
+header.site-header {
+  color: var(--header-text, #000);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10001;
+}
 
-.brand{display:flex;align-items:center;gap:.75rem}
-.logo{
-  display: block;
-  max-height: 40px;      /* Ajusta según tu diseño */
+/* For index page: make header text white by overriding the CSS variable */
+body.index header.site-header {
+  --header-text: #ffffff;
+}
+
+/* Skip link (accessible) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
   width: auto;
-  align-self: center;
-  /*padding superior*/
-  padding-top: 0.5rem;
   height: auto;
-}
-.site-title{line-height:1}
-.site-title .tagline{display:block;color:rgba(255,255,255,0.9);font-size:.8rem}
-
-/* Text color rules: default white, on hover become red */
-.site-header,
-.header-inner,
-.logo,
-.site-title,
-.site-title strong,
-.site-title .tagline{
-    color: #fff;
+  padding: .5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 10002;
 }
 
-/* --- Opción A: la cápsula abraza el contenido (inline-flex) --- */
-/* Centrar la cápsula usando text-align del contenedor */
-.site-header{ text-align:center }
-
-/* Forzar que la cápsula sea del tamaño del contenido (no limitada por max-width) */
-.header-inner{
-     display:inline-flex !important;
-     max-width:none !important;
-     margin:.6rem auto !important;
-     padding:.6rem 1rem !important;
-     justify-content:center !important;
-     align-items:center !important;
-    /* fondo rojo translúcido en forma de cápsula */
-    background: rgba(198,40,40,0.15) !important;
-    border: 1px solid rgba(198,40,40,0.18) !important;
-     border-radius:9999px !important;
-     box-shadow:0 6px 20px rgba(0,0,0,0.08) !important;
-     color:#fff !important;
-     position:relative;
-     flex-wrap:wrap;
+/* Capsule/pill around header content */
+.header-inner {
+  display: inline-flex;
+  margin: .6rem auto;
+  padding: .6rem 1rem;
+  justify-content: center;
+  align-items: center;
+  background: var(--capsule-bg);
+  border: 1px solid var(--capsule-border);
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-/* Evitar que brand o nav se estiren: medirán su contenido */
-.brand, .main-nav{flex:0 0 auto}
-.main-nav{display:flex;gap:.5rem;align-items:center}
+.brand { display:flex; align-items:center; gap:.75rem; }
+.brand .logo { max-height:40px; display:block; }
+.site-title { line-height:1; }
 
-/* En pantallas intermedias y móviles, las reglas existentes seguirán hacer que
-    la navegación baje debajo del brand (breakpoints ya definidos). */
-.main-nav a{
-    display:inline-block;
-    padding:.45rem .65rem;
-    border-radius:.25rem;
-    text-decoration:none;
-    color: #fff; /* default white */
-    font-weight:600;
-    transition: color .18s ease, background .18s ease;
-}
+/* Navigation */
+header.site-header .main-nav { display:flex; gap:.5rem; align-items:center; }
+.main-nav ul { list-style:none; margin:0; padding:0; display:flex; gap:.5rem; align-items:center; }
+.main-nav a { display:inline-block; padding:.45rem .65rem; border-radius:.25rem; text-decoration:none; color:#000000; font-weight:600; transition:color .18s ease, background .18s ease; }
+.main-nav a:hover,.main-nav a:focus { color:var(--accent); background: rgba(0,0,0,.04); }
+.main-nav a[aria-current="page"] { color: var(--accent); }
 
-.main-nav a:hover,
-.main-nav a:focus{
-    color: rgba(198,40,40,1); /* red on hover */
-    background: rgba(0,0,0,.04);
-}
+/* Mobile: toggle nav */
+.nav-toggle { display:none; }
+.nav-toggle-label { display:none; cursor:pointer; padding:.35rem; }
+.nav-toggle-label span { display:block; width:22px; height:2px; background:var(--text); margin:4px 0; transition:all .2s; }
 
-/* Nav */
-.main-nav ul{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    gap:.5rem;
-    align-items:center;
-}
-
-/* Navigation link appearance (single authoritative block) */
-.main-nav a{
-    display:inline-block;
-    padding:.45rem .65rem;
-    border-radius:.25rem;
-    text-decoration:none;
-    color:#fff; /* ensure nav text is white */
-    font-weight:600;
-    transition: color .18s ease, background .18s ease;
-}
-
-.main-nav a:hover,
-.main-nav a:focus{
-    color: var(--accent); /* turn reddish on hover */
-    background: rgba(0,0,0,.04);
-}
-.main-nav a[aria-current="page"]{color:var(--accent)}
-
-/* Mobile toggle */
-.nav-toggle{display:none}
-.nav-toggle-label{display:none; cursor:pointer; padding:.35rem; border-radius:.25rem}
-.nav-toggle-label span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0; transition:all .2s}
-.visually-hidden{position:absolute;left:-9999px}
-
-/* Responsive */
 @media (max-width:800px){
-    .main-nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-top:1px solid #eee;transform-origin:top;transition:transform .18s ease-in-out;overflow:hidden;max-height:0}
-    .main-nav ul{flex-direction:column;gap:0}
-    .main-nav a{padding:1rem}
-    .nav-toggle{display:block}
-    .nav-toggle-label{display:block}
-    .nav-toggle:checked + .nav-toggle-label + .main-nav{max-height:400px}
-    /* keep header-inner layout compact */
-    .header-inner{align-items:flex-start}
+  header.site-header .main-nav{ position:absolute; top:100%; left:0; right:0; background:var(--bg); border-top:1px solid #eee; overflow:hidden; max-height:0; transition:max-height .18s ease; }
+  header.site-header .main-nav ul{ flex-direction:column; gap:0; }
+  header.site-header .main-nav a{ padding:1rem; }
+  .nav-toggle{ display:block; }
+  .nav-toggle-label{ display:block; }
+  .nav-toggle:checked + .nav-toggle-label + .main-nav{ max-height:400px; }
+  .header-inner{ align-items:flex-start; }
 }
+
+/* Visited links color */
+a:visited{ color: var(--accent) !important; }
+
+/* When page has body.index, make header nav links white (override visited) */
+body.index header.site-header .main-nav a,
+body.index header.site-header .main-nav a:visited {
+  color: #ffffff !important;
+}
+body.index header.site-header .main-nav a:hover,
+body.index header.site-header .main-nav a:focus {
+  color: var(--accent);
+  background: rgba(255,255,255,0.06);
+}
+
+/* End header.css */
