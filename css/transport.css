@@ -40,7 +40,7 @@ section {
 
 /* FEATURE CARD */
 section {
-    padding: 60px 60px 80px;
+    padding: 40px 60px 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,6 +80,8 @@ section {
 .feature-card.expanded {
     padding: 24px 20px 32px;
     min-height: auto;
+    z-index: 100;
+    position: relative;
 }
 
 .feature-img {
@@ -120,7 +122,7 @@ section {
 
 .feature-card p {
     font-size: 14px;
-    color: var(--muted);
+    color: white;
     line-height: 1.6;
     margin: 0;
     z-index: 2;
@@ -184,7 +186,6 @@ section {
 
 .detail-text {
     font-size: 14px;
-    color: var(--muted);
     line-height: 1.8;
     margin: 0;
     color: #f0eaea;
@@ -240,7 +241,7 @@ section {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #999;
+    color: #ffffff;
     transition: color 0.2s ease;
     z-index: 10;
 }
@@ -291,10 +292,6 @@ section {
         padding: 48px 36px;
     }
 
-    .header-left h1 {
-        font-size: 36px;
-    }
-
     section {
         padding: 40px 36px 60px;
     }
@@ -317,7 +314,7 @@ section {
         padding: 28px 20px;
     }
 
-    .header-left h1 {
+    .title-section h1 {
         font-size: 28px;
     }
 
@@ -336,6 +333,7 @@ section {
     .feature-card.expanded .feature-img {
         width: 100px;
         height: 100px;
+        z-index: 999;
     }
 
     .feature-expanded-info {

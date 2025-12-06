@@ -1,0 +1,95 @@
+:root {
+    --history-bg: url("../img/events/eventos-bg.jpg");
+}
+
+body::before {
+    background-image: var(--history-bg);
+}
+
+
+.events-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+}
+@media (min-width: 768px) {
+    .events-grid { grid-template-columns: repeat(4, 1fr); padding: 2rem; }
+}
+
+/* Card visual */
+.event-panel {
+    cursor: pointer;
+}
+
+.card {
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.event-panel:hover .card {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), inset 0 0 0 3px #cc0000;
+    filter: brightness(0.8);
+}
+
+.card h3 { margin: 0 0 0.5rem 0; font-size: 1.3rem; }
+.card p { margin: 0; font-size: 0.9rem; }
+
+/* Button oculto */
+.btn {
+    display: none;
+}
+
+/* Details */
+.details {
+    padding: 20px 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.detail {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.detail h4 {
+    margin-top: 0;
+}
+
+#section-title {
+  padding: 20px 60px;
+}
+
+#calendar-section {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+#calendar-link {
+    display: inline-block;
+    margin-top: .5rem;
+    padding: .5rem 1rem;
+    background: #fdee1c;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+#calendar-link:hover {
+    background: #ac1010;
+    color: #ffffff;
+}

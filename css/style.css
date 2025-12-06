@@ -107,7 +107,7 @@ body{
     font-size: 42px;
     font-weight: bold;
     font-family: georgia, serif;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     text-align: center;
     color: #820d0d
 } 
@@ -123,6 +123,7 @@ body{
     color: #141414a1;
     font-size: 20px;
     margin-bottom: 12px;
+    margin-left: 5px;
 }
 
 /* Homepage title block previously inline-styled in index.html */
