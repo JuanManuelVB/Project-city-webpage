@@ -288,7 +288,7 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .title-section {
+    .title-page {
         padding: 48px 36px;
     }
 
@@ -310,7 +310,7 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .title-section {
+    .title-page {
         padding: 28px 20px;
     }
 

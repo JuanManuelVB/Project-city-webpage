@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Montecatini Pro';
+    src: local('Montecatini Pro Stretto Light'), local('Montecatini-Pro-Stretto-Light'),
+        url('MontecatiniPro-StrettoLight.woff2') format('woff2'),
+        url('MontecatiniPro-StrettoLight.woff') format('woff'),
+        url('MontecatiniPro-StrettoLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }

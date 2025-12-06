@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Montecatini Pro';
+    src: local('Montecatini Pro Stretto Bold'), local('Montecatini-Pro-Stretto-Bold'),
+        url('../fonts/MontecatiniPro-StrettoBold.woff2') format('woff2'),
+        url('../fonts/MontecatiniPro-StrettoBold.woff') format('woff'),
+        url('../fonts/MontecatiniPro-StrettoBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
 
 :root{
     /*colors*/
@@ -37,7 +47,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.09;          
+    opacity: 0.2;          
     z-index: 0;
     pointer-events: none;
     filter: saturate(0.9) contrast(0.95);
@@ -50,14 +60,17 @@ section{
 }
 
 
-/* Background video and stacking context for header/main */
+/* Background video and stacking context for header/main
+   Cambiado para que el video esté en el flujo del documento
+   (ocupando la primera pantalla) en lugar de fixed sobre toda la ventana.
+*/
 #bg-video{
-    position:fixed;
-    inset:0;
+    position: relative;
     width:100%;
-    height:100%;
+    height:100vh; /* ocupa una pantalla completa y deja espacio debajo */
     object-fit:cover;
-    z-index:-1;
+    z-index:-1; /* colocar el video detrás del contenido */
+    display: block;
     filter: brightness(0.6); /* 1 = normal, <1 oscurece, >1 aclara */
 }
 /* Ensure header and main appear above the video */
@@ -66,25 +79,8 @@ main{
     position:relative;
     z-index:1;
 }
+/* Header is now position:sticky so content naturally sits below it. */
 
-/* Logo sizing: ensure header logo fits and is not oversized */
-#logoHeader,
-.logo-image{
-    display: block;
-    max-height: 56px; /* <= header height - adjust as needed */
-    height: auto;
-    max-width: 220px; /* prevent extremely wide logos */
-    width: auto;
-    object-fit: contain;
-}
-
-@media (max-width:800px){
-    #logoHeader,
-    .logo-image{
-        max-height: 44px;
-        max-width: 160px;
-    }
-}
 
 * {
     margin: 0;
@@ -128,4 +124,28 @@ body{
     font-size: 20px;
     margin-bottom: 12px;
     margin-left: 5px;
+}
+
+/* Homepage title block previously inline-styled in index.html */
+.indexTitle {
+    /* Place the title over the video: match viewport size and position */
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2; /* above video (z-index: -1) but below header (z-index: 10001) */
+}
+
+.indexTitle h1 {
+    font-family: 'Montecatini Pro', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 12vw, 10rem);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }

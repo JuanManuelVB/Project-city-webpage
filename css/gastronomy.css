@@ -1,0 +1,100 @@
+:root {
+	--accent: #d92e2e;
+	--gastronomy-bg: url("../img/history/historia-sevilla.jpg");
+}
+
+/* Apply the same translucent background used by history, scoped to pages
+   where <body> has class "gastronomy". This uses the global body::before
+   defined in `style.css` and overrides the background-image + opacity. */
+body.gastronomy::before {
+	background-image: var(--gastronomy-bg);
+	/* slightly stronger than history for better visibility */
+	opacity: 0.3;
+}
+
+
+
+/* Tarjeta horizontal con esquinas redondeadas */
+.food-card {
+	display: flex;
+	align-items: center;
+    /*ubicar la tarjeta en el centro horizotalmente*/
+    margin: 0 auto;
+    /*desplazar hacia abajo para dar espacio al header*/
+    margin-top: 100px;
+	gap: 16px;
+	max-width: 900px;
+	width: 100%;
+	background: #fff;
+	padding: 12px;
+	border-radius: 12px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+	overflow: hidden;
+	cursor: pointer;
+	transition: max-height 320ms ease, box-shadow 200ms ease;
+	max-height: 120px; /* estado cerrado */
+	border: 1px solid #eee;
+}
+.food-card:focus {
+	outline: 3px solid rgba(200,0,0,0.15);
+	outline-offset: 2px;
+}
+
+/* Al pasar el ratón o al recibir foco, se "abre" la tarjeta */
+.food-card:hover,
+.food-card:focus-within {
+	max-height: 420px; /* suficiente para mostrar más información */
+	box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* Imagen a la izquierda */
+.food-card img {
+	width: 180px;
+	height: 120px;
+	object-fit: cover;
+	border-radius: 8px;
+	flex-shrink: 0;
+}
+
+/* Contenido a la derecha */
+.card-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Título en color rojo */
+.card-title {
+	color: #c42020;
+	font-size: 1.4rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+/* Detalles ocultos inicialmente y aparecen al abrir */
+.card-details {
+	margin-top: 10px;
+	color: #333;
+	line-height: 1.4;
+	opacity: 0;
+	transform: translateY(-8px);
+	transition: opacity 220ms ease, transform 220ms ease;
+	max-height: 0;
+	overflow: hidden;
+}
+
+/* Cuando la tarjeta está abierta, mostrar detalles */
+.food-card:hover .card-details,
+.food-card:focus-within .card-details {
+	opacity: 1;
+	transform: none;
+	max-height: 300px;
+}
+
+/* Pequeña etiqueta de "más" para indicar interactividad */
+.more-hint {
+	font-size: 0.85rem;
+	color: #666;
+	margin-top: 6px;
+}
+
