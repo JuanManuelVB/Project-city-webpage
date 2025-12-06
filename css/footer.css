@@ -20,7 +20,7 @@ footer {
     font-size: 13px;
     line-height: 20px;
     /*Desplazar el footer hacia arriba*/
-    margin-top: -100px;
+    margin-top: -70px;
 }
 
 footer .row{
