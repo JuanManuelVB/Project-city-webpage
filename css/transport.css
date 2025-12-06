@@ -191,6 +191,12 @@ section {
     color: #f0eaea;
 }
 
+#desc {
+    font-size: 13px;
+    color: #000000;
+    margin-top: 4px;
+}   
+
 .detail-text .link-inline {
     color: white;
     text-decoration: none;

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${item.img}" alt="${item.title}">
                 </div>
                 <h3>${item.title}</h3>
-                <p>${item.desc}</p>
+                <p id="desc">${item.desc}</p>
                 <div class="feature-expanded-info">
                     <div class="expanded-content">
                         <p class="detail-text">${item.detailText}</p>
