@@ -1,0 +1,43 @@
+
+name: Deploy /html to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Evita que GitHub Pages/Jekyll ignore recursos en carpetas con "_"
+      - name: Add .nojekyll
+        run: |
+            mkdir -p html
+            touch html/.nojekyll
+
+      # Sube SOLO la carpeta html como el artefacto del sitio
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./html
+
+      # Publica el artefacto en GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
