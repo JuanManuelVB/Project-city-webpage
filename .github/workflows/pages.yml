@@ -1,0 +1,54 @@
+
+name: Deploy static site (html + assets) to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Monta una carpeta 'site' con todo lo necesario
+      - name: Build static site folder
+        run: |
+          rm -rf site
+          mkdir -p site
+
+          # index.html sale de /html y pasa a la raíz publicada
+          cp -f html/index.html site/index.html
+
+          # Copia las carpetas de assets si existen
+          [ -d css ] && cp -r css site/css
+          [ -d js ] && cp -r js site/js
+          [ -d img ] && cp -r img site/img
+          [ -d videos ] && cp -r videos site/videos
+
+          # Evitar procesamiento Jekyll (por si algún día hay carpetas con "_")
+          touch site/.nojekyll
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
