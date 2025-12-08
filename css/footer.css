@@ -23,27 +23,28 @@ footer {
     margin-top: 50px;
 }
 
-footer .row{
+/* Top area: four columns using CSS Grid */
+.footer-columns{
     width: 85%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 2rem;
+    align-items: start;
 }
 
-footer .col{
-    flex-basis: 25%;
+/* Generic column inside footer */
+.footer-columns .col{
     padding: 10px;
 }
 
-footer .col h3{
+.footer-columns .col h3{
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
 }
 
-footer .email-id{
+.footer-columns .email-id{
     width: fit-content;
     border-bottom: 1px solid #ccc;
     margin: 20px 0;
@@ -54,6 +55,26 @@ footer .footer-logo{
     margin-bottom: 30px;
 }
 
+/* Bottom row: copyright / legal links */
+.footer-bottom{
+    width: 85%;
+    margin: 2rem auto 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-bottom-left{
+    flex: 1 1 66%;
+}
+.footer-bottom-right{
+    flex: 0 0 33%;
+    text-align: right;
+}
+
 /* Enlaces visitados en el footer: usar el color de acento o caer en rojo */
 footer a:visited {
     color: var(--accent, #c62828) !important;
@@ -62,4 +83,25 @@ footer a:visited {
 /* Aplicar el empuje del footer solo en la página index (body.index) */
 body.index footer {
     margin-top: -70px;
+}
+
+/* Responsive: stack footer columns on small screens */
+@media (max-width: 900px) {
+    .footer-columns{
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-bottom{
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+    }
+    .footer-bottom-right{
+        text-align: left;
+    }
+}
+
+@media (max-width: 520px) {
+    .footer-columns{
+        grid-template-columns: 1fr;
+    }
 }
