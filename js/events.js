@@ -43,7 +43,7 @@ function createCard(event) {
 function renderCards() {
     const container = document.getElementById("events-grid");
     if (container) {
-        container.innerHTML = eventsData.map(createCard).join("");
+        container.innerHTML = eventsData.map(createCard).join("");// Render all cards
         
         // Event delegation: scroll a la sección de detalles
         container.addEventListener('click', (e) => {
