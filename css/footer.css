@@ -19,8 +19,8 @@ footer {
     border-top-right-radius: 75px;
     font-size: 13px;
     line-height: 20px;
-    /*Desplazar el footer hacia arriba*/
-    margin-top: -70px;
+    /*Desplazar el footer hacia ABAJO*/
+    margin-top: 50px;
 }
 
 footer .row{
@@ -57,4 +57,9 @@ footer .footer-logo{
 /* Enlaces visitados en el footer: usar el color de acento o caer en rojo */
 footer a:visited {
     color: var(--accent, #c62828) !important;
+}
+
+/* Aplicar el empuje del footer solo en la página index (body.index) */
+body.index footer {
+    margin-top: -70px;
 }

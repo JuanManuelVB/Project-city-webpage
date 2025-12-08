@@ -18,11 +18,9 @@ body.gastronomy::before {
 .food-card {
 	display: flex;
 	align-items: center;
-    /*ubicar la tarjeta en el centro horizotalmente*/
-    margin: 0 auto;
-    /*desplazar hacia abajo para dar espacio al header*/
-    margin-top: 100px;
-	gap: 16px;
+	/* Centrado horizontal + separación vertical menor entre tarjetas */
+	margin: 12px auto; /* 12px arriba/abajo, centrado horizontal */
+	gap: 12px; /* espacio interno entre elementos de la tarjeta (imagen ↔ contenido) */
 	max-width: 900px;
 	width: 100%;
 	background: #fff;
@@ -35,6 +33,13 @@ body.gastronomy::before {
 	max-height: 120px; /* estado cerrado */
 	border: 1px solid #eee;
 }
+
+/* Mantener el desplazamiento superior grande solo para la primera tarjeta
+   (evita que el primer card se solape con el header) */
+body.gastronomy .food-card:first-of-type {
+	margin-top: 100px;
+}
+
 .food-card:focus {
 	outline: 3px solid rgba(200,0,0,0.15);
 	outline-offset: 2px;

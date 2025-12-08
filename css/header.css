@@ -15,8 +15,8 @@
   --bg: #fff;
   --text: #222;
   --muted: #666;
-  --capsule-bg: rgba(198,40,40,0.15);
-  --capsule-border: rgba(198,40,40,0.18);
+  --capsule-bg: rgba(198, 40, 40, 0.15);
+  --capsule-border: rgba(198, 40, 40, 0.18);
 }
 
 /* Base header container */
@@ -52,6 +52,7 @@ body.index header.site-header {
   height: 1px;
   overflow: hidden;
 }
+
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
@@ -73,47 +74,185 @@ body.index header.site-header {
   background: var(--capsule-bg);
   border: 1px solid var(--capsule-border);
   border-radius: 9999px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-.brand { display:flex; align-items:center; gap:.75rem; }
-.brand .logo { max-height:40px; display:block; }
-.site-title { line-height:1; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.brand .logo {
+  max-height: 40px;
+  display: block;
+}
+
+.site-title {
+  line-height: 1;
+}
 
 /* Navigation */
-header.site-header .main-nav { display:flex; gap:.5rem; align-items:center; }
-.main-nav ul { list-style:none; margin:0; padding:0; display:flex; gap:.5rem; align-items:center; }
-.main-nav a { display:inline-block; padding:.45rem .65rem; border-radius:.25rem; text-decoration:none; color:#000000; font-weight:600; transition:color .18s ease, background .18s ease; }
-.main-nav a:hover,.main-nav a:focus { color:var(--accent); background: rgba(0,0,0,.04); }
-.main-nav a[aria-current="page"] { color: var(--accent); }
+header.site-header .main-nav {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
 
-/* Mobile: toggle nav */
-.nav-toggle { display:none; }
-.nav-toggle-label { display:none; cursor:pointer; padding:.35rem; }
-.nav-toggle-label span { display:block; width:22px; height:2px; background:var(--text); margin:4px 0; transition:all .2s; }
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
 
-@media (max-width:800px){
-  header.site-header .main-nav{ position:absolute; top:100%; left:0; right:0; background:var(--bg); border-top:1px solid #eee; overflow:hidden; max-height:0; transition:max-height .18s ease; }
-  header.site-header .main-nav ul{ flex-direction:column; gap:0; }
-  header.site-header .main-nav a{ padding:1rem; }
-  .nav-toggle{ display:block; }
-  .nav-toggle-label{ display:block; }
-  .nav-toggle:checked + .nav-toggle-label + .main-nav{ max-height:400px; }
-  .header-inner{ align-items:flex-start; }
+.main-nav a {
+  display: inline-block;
+  padding: .45rem .65rem;
+  border-radius: .25rem;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  transition: color .18s ease, background .18s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--accent);
+  background: rgba(0, 0, 0, .04);
+}
+
+.main-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+/* Botón hamburguesa (visible en móvil) */
+/* label acting as hamburger button (used together with hidden checkbox) */
+.nav-toggle {
+  display: none;
+  /* make the label a vertical stack so spans form three horizontal bars */
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: 0;
+  padding: 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Navegación colapsada en móvil */
+/* bars inside the hamburger (span elements) */
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+/* Mobile behaviour: show hamburger, collapse desktop nav */
+@media (max-width: 680px) {
+
+  /* make the hamburger visible */
+  .nav-toggle {
+    display: inline-flex
+  }
+
+  /* keep a visually-hidden but focusable checkbox for accessibility */
+  .nav-toggle-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0
+  }
+
+  header.site-header .main-nav {
+    display: none;
+    position: absolute;
+    left: .6rem;
+    right: .6rem;
+    top: calc(100% + .6rem);
+    z-index: 10003;
+    background: var(--bg);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+    overflow: hidden;
+    padding: .25rem 0
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0
+  }
+
+  .main-nav a {
+    display: block;
+    padding: .75rem 1rem;
+    border-radius: 0;
+    color: var(--text);
+    background: transparent
+  }
+
+  .main-nav a+a {
+    border-top: 2px solid var(--accent)
+  }
+
+  /* CSS-only toggle: when checkbox is checked, show nav and animate bars */
+  #nav-toggle:checked+.nav-toggle+.main-nav {
+    display: block
+  }
+
+  #nav-toggle:checked+.nav-toggle .bar:nth-child(1) {
+    transform: translateY(5px) rotate(45deg)
+  }
+
+  #nav-toggle:checked+.nav-toggle .bar:nth-child(2) {
+    opacity: 0
+  }
+
+  #nav-toggle:checked+.nav-toggle .bar:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg)
+  }
+
+  /* index page contrast inside dropdown */
+  /* On index page keep desktop contrast, but for mobile dropdown use dark text */
+  body.index header.site-header .main-nav a {
+    color: #fff !important
+  }
+
+  body.index #nav-toggle:checked+.nav-toggle+.main-nav a {
+    color: var(--text) !important
+  }
 }
 
 /* Visited links color */
-a:visited{ color: var(--accent) !important; }
+a:visited {
+  color: var(--accent) !important;
+}
 
 /* When page has body.index, make header nav links white (override visited) */
 body.index header.site-header .main-nav a,
 body.index header.site-header .main-nav a:visited {
   color: #ffffff !important;
 }
+
 body.index header.site-header .main-nav a:hover,
 body.index header.site-header .main-nav a:focus {
   color: var(--accent);
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* End header.css */

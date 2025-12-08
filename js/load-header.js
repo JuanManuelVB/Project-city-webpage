@@ -23,7 +23,23 @@
         return res.text();
       })
       .then(html => {
+        // Insert HTML
         container.innerHTML = html;
+
+        // Execute any scripts included in the fetched fragment.
+        // Scripts added via innerHTML don't execute automatically in many browsers,
+        // so we replace them with new <script> elements to force execution.
+        const scripts = Array.from(container.querySelectorAll('script'));
+        scripts.forEach(old => {
+          const script = document.createElement('script');
+          // copy attributes we care about
+          if (old.src) script.src = old.src;
+          if (old.type) script.type = old.type;
+          if (old.defer) script.defer = true;
+          if (old.async) script.async = true;
+          if (!old.src) script.textContent = old.textContent;
+          old.parentNode.replaceChild(script, old);
+        });
       })
       .catch(err => {
         console.error('Header loader error:', err);
