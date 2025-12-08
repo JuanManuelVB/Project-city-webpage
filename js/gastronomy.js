@@ -75,6 +75,21 @@ function escapeHTML(str){
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
+function createCard(item) { 
+       return  `<div class="food-card" role="button" tabindex="0" aria-expanded="false">
+                <img src="${item.img}" alt="${item.alt}">
+                <div class="food-content">
+                    <h3 class="food-title">${item.title}</h3>
+                    <div class="more-hint">Hover or press to see more</div>
+                    <div class="food-details" aria-hidden="true">
+                        <p>${item. excerpt}</p>
+                        <p><strong>Ingredients:</strong> ${item.ingredients}</p>
+                        <p><strong>Brief Preparation:</strong> ${item.preparation}</p>
+                    </div>
+                </div>
+            </div>`;
+}
+
 function renderCardsWithTemplate(container, data){
     let html = '';
     data.forEach(item => {
@@ -85,19 +100,7 @@ function renderCardsWithTemplate(container, data){
         const ingredients = escapeHTML(item.ingredients || '');
         const preparation = escapeHTML(item.preparation || '');
 
-        html += `
-            <div class="food-card" role="button" tabindex="0" aria-expanded="false">
-                <img src="${img}" alt="${alt}">
-                <div class="card-content">
-                    <h3 class="card-title">${title}</h3>
-                    <div class="more-hint">Hover or press to see more</div>
-                    <div class="card-details" aria-hidden="true">
-                        <p>${excerpt}</p>
-                        <p><strong>Ingredients:</strong> ${ingredients}</p>
-                        <p><strong>Brief Preparation:</strong> ${preparation}</p>
-                    </div>
-                </div>
-            </div>`;
+        html += createCard({title, img, alt, excerpt, ingredients, preparation})    ;
     });
 
     container.innerHTML = html;
@@ -145,7 +148,7 @@ function renderCards(container, data){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('#foodCardsContainer') || document.querySelector('.cards-list');
+    const container = document.querySelector('#foodCardsContainer') || document.querySelector('.food-list');
     if(!container) return;
     const data = (window.GASTRONOMY_DATA && Array.isArray(window.GASTRONOMY_DATA)) ? window.GASTRONOMY_DATA : DEFAULT_GASTRONOMY_DATA;
     // Use the template renderer to preserve original markup

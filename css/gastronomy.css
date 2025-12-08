@@ -1,20 +1,9 @@
-:root {
-	--accent: #d92e2e;
-	--gastronomy-bg: url("../img/gastronomy/Puente_de_Triana_4.webp");
-}
 
-/* Apply the same translucent background used by history, scoped to pages
-   where <body> has class "gastronomy". This uses the global body::before
-   defined in `style.css` and overrides the background-image + opacity. */
-body.gastronomy::before {
-	background-image: var(--gastronomy-bg);
-	/* slightly stronger than history for better visibility */
+body::before {
+	background-image: url("../img/gastronomy/Puente_de_Triana_4.webp");
 	opacity: 0.3;
 }
 
-
-
-/* Tarjeta horizontal con esquinas redondeadas */
 .food-card {
 	display: flex;
 	align-items: center;
@@ -22,8 +11,8 @@ body.gastronomy::before {
 	margin: 12px auto; /* 12px arriba/abajo, centrado horizontal */
 	gap: 12px; /* espacio interno entre elementos de la tarjeta (imagen ↔ contenido) */
 	max-width: 900px;
-	width: 100%;
-	background: #fff;
+	width: 100%; /** ocupa todo el ancho disponible hasta max-width **/
+	background: #ffffff;
 	padding: 12px;
 	border-radius: 12px;
 	box-shadow: 0 2px 6px rgba(0,0,0,0.12);
@@ -36,13 +25,13 @@ body.gastronomy::before {
 
 /* Mantener el desplazamiento superior grande solo para la primera tarjeta
    (evita que el primer card se solape con el header) */
-body.gastronomy .food-card:first-of-type {
-	margin-top: 100px;
+body .food-card:first-of-type {
+	margin-top: 50px;
 }
 
 .food-card:focus {
 	outline: 3px solid rgba(200,0,0,0.15);
-	outline-offset: 2px;
+	/*outline-offset: 2px;*/
 }
 
 /* Al pasar el ratón o al recibir foco, se "abre" la tarjeta */
@@ -56,20 +45,20 @@ body.gastronomy .food-card:first-of-type {
 .food-card img {
 	width: 180px;
 	height: 120px;
-	object-fit: cover;
+	object-fit: cover; /* cubrir sin distorsionar */
 	border-radius: 8px;
 	flex-shrink: 0;
 }
 
 /* Contenido a la derecha */
-.card-content {
-	flex: 1;
+.food-content {
+	flex: 1; /* ocupa el espacio restante, incluso crece para llenarlo todo */
 	display: flex;
 	flex-direction: column;
 }
 
 /* Título en color rojo */
-.card-title {
+.food-title {
 	color: #c42020;
 	font-size: 1.4rem;
 	font-weight: 700;
@@ -77,7 +66,7 @@ body.gastronomy .food-card:first-of-type {
 }
 
 /* Detalles ocultos inicialmente y aparecen al abrir */
-.card-details {
+.food-details {
 	margin-top: 10px;
 	color: #333;
 	line-height: 1.4;
@@ -89,8 +78,8 @@ body.gastronomy .food-card:first-of-type {
 }
 
 /* Cuando la tarjeta está abierta, mostrar detalles */
-.food-card:hover .card-details,
-.food-card:focus-within .card-details {
+.food-card:hover .food-details,
+.food-card:focus-within .food-details {
 	opacity: 1;
 	transform: none;
 	max-height: 300px;

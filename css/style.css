@@ -97,14 +97,13 @@ body{
 }
 
 .title-page {
-    background: transparent;
     padding: 80px 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     align-items: center;
-    font-size: 42px;
+    font-size: 52px;
     font-weight: bold;
     font-family: georgia, serif;
     margin-bottom: 5px;
@@ -113,17 +112,19 @@ body{
 } 
 
 .subtitle-page {
-    font-size: 28px;
     font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 40px;
     margin-bottom: 60px;
+    margin-left: 60px;
     color: rgb(43, 1, 1)
 }
 
 .slogan {
     color: #141414a1;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 12px;
-    margin-left: 5px;
+    margin-left: 60px;
 }
 
 /* Homepage title block previously inline-styled in index.html */
