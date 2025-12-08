@@ -33,12 +33,12 @@ const DEFAULT_GASTRONOMY_DATA = [
     },
     {
         id: 'croquetas-jamon',
-        title: 'Croquetas Cremosas de Jamón',
+        title: 'Creamy Ham Croquettes',
         img: '/img/gastronomy/croqueta.jpg',
-        alt: 'Crocantes croquetas rellenas de jamón y bechamel cremosa',
-        excerpt: 'Crujiente por fuera y con un interior sedoso impregnado de jamón.',
-        ingredients: 'Jamón serrano, mantequilla, harina, leche, nuez moscada, huevo, pan rallado, aceite.',
-        preparation: 'Hacer una bechamel espesa con jamón picado, enfriar, formar croquetas, rebozar y freír hasta dorar.'
+        alt: 'Crispy croquettes filled with ham and creamy béchamel',
+        excerpt: 'Crispy on the outside with a silky interior infused with ham.',
+        ingredients: 'Serrano ham, butter, flour, milk, nutmeg, egg, breadcrumbs, oil.',
+        preparation: 'Make a thick béchamel with chopped ham, chill, shape into croquettes, coat and fry until golden.'
     },
     {
         id: 'pescaito-frito',
@@ -90,11 +90,11 @@ function renderCardsWithTemplate(container, data){
                 <img src="${img}" alt="${alt}">
                 <div class="card-content">
                     <h3 class="card-title">${title}</h3>
-                    <div class="more-hint">Pasa el ratón o pulsa para ver más</div>
+                    <div class="more-hint">Hover or press to see more</div>
                     <div class="card-details" aria-hidden="true">
                         <p>${excerpt}</p>
-                        <p><strong>Ingredientes:</strong> ${ingredients}</p>
-                        <p><strong>Preparación breve:</strong> ${preparation}</p>
+                        <p><strong>Ingredients:</strong> ${ingredients}</p>
+                        <p><strong>Brief Preparation:</strong> ${preparation}</p>
                     </div>
                 </div>
             </div>`;
