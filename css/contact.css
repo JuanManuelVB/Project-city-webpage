@@ -54,14 +54,14 @@
 }
 
 /*Cuando esta la pantalla a la mitad mas o menos */
-@media (max-width:980px) {
+@media screen and (max-width:980px) {
     .contact-columns {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Cuando la pantalla es pequeña */
-@media (max-width:620px) {
+@media screen and (max-width:620px) {
     .contact-columns {
         grid-template-columns: 1fr;
     }
