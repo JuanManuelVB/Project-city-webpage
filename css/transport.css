@@ -39,7 +39,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
     cursor: pointer;
     min-height: 280px;
     position: relative;
@@ -131,7 +130,6 @@ section {
 .transport-card.expanded .transport-expanded-info {
     transform: scaleY(1);
     opacity: 1;
-    pointer-events: auto;
 }
 
 /* contenido interno mantiene su layout normal */
@@ -139,21 +137,6 @@ section {
     display: flex;
     flex-direction: column;
     gap: 14px;
-}
-
-/* en móvil el panel se vuelve estático (para evitar problemas de superposición) */
-@media (max-width: 768px) {
-    .transport-expanded-info {
-        position: static;
-        transform: none;
-        opacity: 1;
-        pointer-events: auto;
-        width: 100%;
-        padding: 12px 0 0;
-        box-shadow: none;
-        margin-top: 12px;
-        border-radius: 8px;
-    }
 }
 
 .detail-text {
@@ -217,31 +200,7 @@ section {
     }
 }
 
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .transport-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .title-page {
-        padding: 48px 36px;
-    }
-
-    section {
-        padding: 40px 36px 60px;
-    }
-
-    .detail-img {
-        height: 140px;
-    }
-
-    .transport-expanded-info {
-        min-width: 240px;
-    }
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .transport-container {
         grid-template-columns: 1fr;
     }
@@ -250,22 +209,18 @@ section {
         padding: 28px 20px;
     }
 
-    .title-section h1 {
-        font-size: 28px;
-    }
-
-    section {
-        padding: 24px 20px 48px;
-    }
-
     .detail-img {
         height: 120px;
     }
 
+    .transport-card {
+        min-height: auto;
+    }
+
     .transport-card.expanded .transport-img {
-        width: 100px;
+        width: 90px;
         height: 100px;
-        z-index: 999;
+        z-index: 3;
     }
 
     .transport-expanded-info {
