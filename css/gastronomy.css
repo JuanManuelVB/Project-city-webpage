@@ -5,8 +5,7 @@ body::before {
 
 .food-card {
 	display: flex;
-	align-items: center;
-	/* Centrado horizontal + separación vertical menor entre tarjetas */
+	align-items: center;	/* Centrado horizontal + separación vertical menor entre tarjetas */
 	margin: 12px auto; /* 12px arriba/abajo, centrado horizontal */
 	gap: 12px; /* espacio interno entre elementos de la tarjeta (imagen ↔ contenido) */
 	max-width: 900px;
@@ -28,9 +27,9 @@ body .food-card:first-of-type {
 	margin-top: 50px;
 }
 
+/* Estilo de foco para accesibilidad */
 .food-card:focus {
 	outline: 3px solid rgba(200,0,0,0.15);
-	/*outline-offset: 2px;*/
 }
 
 /* Al pasar el ratón o al recibir foco, se "abre" la tarjeta */
@@ -46,7 +45,7 @@ body .food-card:first-of-type {
 	height: 120px;
 	object-fit: cover; /* cubrir sin distorsionar */
 	border-radius: 8px;
-	flex-shrink: 0;
+	flex-shrink: 0; 
 }
 
 /* Contenido a la derecha */
@@ -71,7 +70,7 @@ body .food-card:first-of-type {
 	line-height: 1.4;
 	opacity: 0;
 	transform: translateY(-8px);
-	transition: opacity 220ms ease, transform 220ms ease;
+	transition: opacity 220ms ease, transform 220ms ease; /* suavizado de aparición */
 	max-height: 0;
 	overflow: hidden;
 }

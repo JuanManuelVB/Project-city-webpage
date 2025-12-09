@@ -1,8 +1,3 @@
-/* gastronomy.js - clean renderer and interactions for gastronomy cards
-     - Renders cards from data (window.GASTRONOMY_DATA or DEFAULT_GASTRONOMY_DATA)
-     - Attaches accessible interactions (hover, focus, click, keyboard)
-*/
-
 const DEFAULT_GASTRONOMY_DATA = [
     {
         id: 'tortilla',

@@ -12,7 +12,7 @@ body::before {
 
 /* TIMELINE CONTAINER */
 .timeline-container {
-    position: relative; 
+    position: relative;
     padding: 20px 0;
 }
 
@@ -36,11 +36,8 @@ body::before {
 .timeline-item {
     display: flex;
     margin-bottom: 50px;
-    scale: 1; /* circulitos */
+    position: relative;
 }
-
-
-
 
 .timeline-item:nth-child(odd) {
     padding-right: 52%;
@@ -94,7 +91,6 @@ body::before {
     height: 18px;
     background: #950707;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(250, 122, 32, 0.3);
     z-index: 3;
     top: 28px;
 }
@@ -136,11 +132,6 @@ body::before {
     .timeline-item::after {
         left: -9px;
         transform: translateX(-50%);
-    }
-
-    .timeline-content {
-        max-width: 100%;
-        padding: 28px;
     }
 
     .timeline-content {

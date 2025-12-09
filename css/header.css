@@ -12,82 +12,47 @@
 
 /* Base header container */
 .site-header {
-  background: transparent;
-  border-bottom: none;
   text-align: center;
-  font-family: 'Montecatini Light', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-/* Header element: fixed on top so it's always visible */
-header.site-header {
-  color:  white;
+  font-family: 'Montecatini Light', system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color: white;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
-  z-index: 10001;
-}
-
-/* For index page: make header text white by overriding the CSS variable */
-body.index header.site-header {
-  color: #ffffff;
-}
-
-/* Skip link (accessible) */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
-  padding: .5rem 1rem;
-  background: #000;
-  color: #fff;
-  z-index: 10002;
+  z-index: 999;
 }
 
 /* Capsule/pill around header content */
 .header-inner {
   display: inline-flex;
-  margin: .6rem auto;
-  padding: .6rem 1rem;
+  margin: 10px auto;
+  padding: 10px 16px;
   justify-content: center;
   align-items: center;
   background: rgba(198, 40, 40, 0.15);
   border: rgba(198, 40, 40, 0.18);
   border-radius: 9999px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.231);
 }
 
+/* Brand/logo section */
 .brand {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: 12px;
 }
 
 .brand .logo {
   max-height: 40px;
-  display: block;
 }
 
 .site-title {
   line-height: 1;
-  color:#c62828
+  color: #ffffff
 }
 
 /* Navigation */
 header.site-header .main-nav {
   display: flex;
-  gap: .5rem;
+  gap: 8px;
   align-items: center;
 }
 
@@ -96,18 +61,17 @@ header.site-header .main-nav {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: .5rem;
+  gap: 8px;
   align-items: center;
 }
 
 .main-nav a {
   display: inline-block;
-  padding: .45rem .65rem;
-  border-radius: .25rem;
+  padding: 7px 10px;
+  border-radius: 4px;
   text-decoration: none;
   color: #000000;
   font-weight: 600;
-  transition: color .18s ease, background .18s ease;
 }
 
 .main-nav a:hover,
@@ -116,14 +80,11 @@ header.site-header .main-nav {
   background: rgba(0, 0, 0, .04);
 }
 
-.main-nav a[aria-current="page"] {
-  color: #c62828;
-}
 
 /* Botón hamburguesa (visible en móvil) */
-/* label acting as hamburger button (used together with hidden checkbox) */
 .nav-toggle {
-  display: none; /* hidden by default; shown only in mobile media query */
+  display: none;
+  /* hidden by default; shown only in mobile media query */
   /* make the label a vertical stack so spans form three horizontal bars */
   flex-direction: column;
   justify-content: space-between;
@@ -132,14 +93,16 @@ header.site-header .main-nav {
   height: 20px;
   background: transparent;
   border: 0;
-  padding: 0.2rem;
+  padding: 3px;
   margin: 0;
   cursor: pointer;
   color: inherit;
 }
 
 /* hide the checkbox by default (only show/access in narrow screens via media query) */
-.nav-toggle-checkbox{display:none}
+.nav-toggle-checkbox {
+  display: none
+}
 
 /* Navegación colapsada en móvil */
 /* bars inside the hamburger (span elements) */
@@ -152,8 +115,8 @@ header.site-header .main-nav {
   transition: transform .18s ease, opacity .18s ease;
 }
 
-/* Mobile behaviour: show hamburger, collapse desktop nav */
-@media screen and (max-width: 768px) {
+/* Mobile behaviour*/
+@media screen and (max-width: 768px) { /*Cuando la pantalla es menor de 768px*/
 
   /* make the hamburger visible */
   .nav-toggle {
@@ -176,15 +139,15 @@ header.site-header .main-nav {
   header.site-header .main-nav {
     display: none;
     position: absolute;
-    left: .6rem;
-    right: .6rem;
-    top: calc(100% + .6rem);
+    left: 10px;
+    right: 10px;
+    top: calc(100% + 10px);
     z-index: 10003;
-    background:#ffffffb4;
+    background: #ffffffb4;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.404);
     overflow: hidden;
-    padding: .25rem 0
+    padding: 4px 0
   }
 
   .main-nav ul {
@@ -194,9 +157,9 @@ header.site-header .main-nav {
 
   .main-nav a {
     display: block;
-    padding: .75rem 1rem;
+    padding: 12px 16px;
     border-radius: 0;
-    color:  #222222;
+    color: #222222;
     background: transparent
   }
 
@@ -228,7 +191,7 @@ header.site-header .main-nav {
   }
 
   body.index #nav-toggle:checked+.nav-toggle+.main-nav a {
-    color:  #222222 !important
+    color: #222222 !important
   }
 }
 
@@ -248,4 +211,3 @@ body.index header.site-header .main-nav a:focus {
   color: #c62828;
   background: rgba(255, 255, 255, 0.06);
 }
-

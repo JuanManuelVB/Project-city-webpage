@@ -1,54 +1,29 @@
-// load-header.js
-// External loader to inject header.html into the page.
-// Usage in HTML (from html/index.html):
-// <div id="site-header"></div>
-// <script src="../js/load-header.js" defer data-path="header.html" data-target="site-header"></script>
+(() => {
+  const { dataset } = document.currentScript || {}; // Obtener los data-attributes del script actual
+  const { path, target } = dataset || {}; // Extraer 'path' y 'target' de los data-attributes
+  if (!path || !target) return;   // Si no están definidos, salir
 
-(function () {
-  const script = document.currentScript;
-  const path = (script && script.dataset && script.dataset.path) || 'header.html';
-  const targetId = (script && script.dataset && script.dataset.target) || 'site-header';
+  const container = document.getElementById(target); // Obtener el contenedor objetivo
+  if (!container) return; // Si no existe el contenedor, salir
 
-  // Wait until DOM is ready (defer ensures DOM is parsed, but keep a safe guard)
-  function mount() {
-    const container = document.getElementById(targetId);
-    if (!container) {
-      console.warn('Header loader: container not found ->', targetId);
-      return;
-    }
+  const load = async () => {
+    try {
+      const res = await fetch(path);    // Extraer el contenido del archivo HTML
+      if (!res.ok) throw res;   // Comprobante de errores en la respuesta
+      container.innerHTML = await res.text(); // Insertar el HTML en el contenedor y esperar a que se cargue
 
-    fetch(path)
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch ' + path + ' (status ' + res.status + ')');
-        return res.text();
-      })
-      .then(html => {
-        // Insert HTML
-        container.innerHTML = html;
-
-        // Execute any scripts included in the fetched fragment.
-        // Scripts added via innerHTML don't execute automatically in many browsers,
-        // so we replace them with new <script> elements to force execution.
-        const scripts = Array.from(container.querySelectorAll('script'));
-        scripts.forEach(old => {
-          const script = document.createElement('script');
-          // copy attributes we care about
-          if (old.src) script.src = old.src;
-          if (old.type) script.type = old.type;
-          if (old.defer) script.defer = true;
-          if (old.async) script.async = true;
-          if (!old.src) script.textContent = old.textContent;
-          old.parentNode.replaceChild(script, old);
-        });
-      })
-      .catch(err => {
-        console.error('Header loader error:', err);
+      // Reemplazar los scripts para que se ejecuten
+      container.querySelectorAll('script').forEach(s => { // Iterar sobre cada script
+        const newScript = document.createElement('script');  // Crear un nuevo elemento script
+        s.src ? newScript.src = s.src : newScript.textContent = s.textContent; // Copiar src o contenido
+        s.replaceWith(newScript); // Reemplazar el script antiguo por el nuevo
       });
-  }
+    } catch (e) {
+      console.error('load-header:', e);
+    }
+  };
 
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    mount();
-  } else {
-    document.addEventListener('DOMContentLoaded', mount);
-  }
+  document.readyState === 'loading' // El DOM aún se está cargando
+    ? document.addEventListener('DOMContentLoaded', load) // Esperar al DOMContentLoaded
+    : load();  // Ejecutar inmediatamente si el DOM ya está cargado
 })();
