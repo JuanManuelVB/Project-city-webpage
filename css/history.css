@@ -11,7 +11,6 @@ body::before {
 @media (max-width: 1024px) {
     .title-page {
         padding: 48px 36px;
-        flex-direction: column;
         align-items: flex-start;
     }
 
@@ -76,15 +75,11 @@ body::before {
 
 
 .timeline-item:nth-child(odd) {
-    flex-direction: row;
-    justify-content: flex-end;
     padding-right: 52%;
 }
 
 
 .timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
-    justify-content: flex-end;
     padding-left: 52%;
 }
 
@@ -96,7 +91,6 @@ body::before {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     width: 100%;
     max-width: 480px;
-    transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
