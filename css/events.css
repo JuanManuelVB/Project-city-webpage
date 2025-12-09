@@ -2,15 +2,20 @@ body::before {
     background-image: url("../img/events/eventos-bg.jpg");
 }
 
-
 .events-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 24px;
     grid-template-columns: 1fr;
-    padding: 1rem;
+    /*En móvil: 1 columna que ocupa todo el ancho disponible (1fr = 1 fracción) */
+    padding: 16px;
 }
+
 @media (min-width: 768px) {
-    .events-grid { grid-template-columns: repeat(4, 1fr); padding: 2rem; }
+    .events-grid {
+        grid-template-columns: repeat(4, 1fr);  
+        /*Para pantalla grande: 4 columnas de igual tamaño */
+        padding: 32px;
+    }
 }
 
 /* Card visual */
@@ -21,16 +26,17 @@ body::before {
 .card {
     background-size: cover;
     background-position: center;
-    color: #fff;
-    padding: 1.5rem;
+    /* Imagen de fondo ocupa todo y está centrada */
+    color: #ffffff;
+    padding: 24px;
     border-radius: 10px;
     min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.438);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.438);
     transition: box-shadow 0.3s ease, filter 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .event-panel:hover .card {
@@ -38,8 +44,15 @@ body::before {
     filter: brightness(0.8);
 }
 
-.card h3 { margin: 0 0 0.5rem 0; font-size: 1.3rem; }
-.card p { margin: 0; font-size: 0.9rem; }
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.9rem;
+}
 
 /* Button oculto */
 .btn {
@@ -50,35 +63,29 @@ body::before {
 .details {
     padding: 20px 100px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto; /* centrado horizontalmente*/
 }
+
 .detail {
-    background: #fff;
+    background: #ffffff;
     border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
-.detail h4 {
-    margin-top: 0;
-}
-
-#section-title {
-  padding: 20px 60px;
-}
 
 #calendar-section {
     max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 32px auto;
+    padding: 0 16px;
     text-align: center;
 }
 
 #calendar-link {
     display: inline-block;
-    margin-top: .5rem;
-    padding: .5rem 1rem;
+    margin-top: 8px;
+    padding: 8px;
     background: #fdee1c;
     color: #000000;
     text-decoration: none;

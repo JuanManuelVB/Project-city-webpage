@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +13,24 @@
     <link rel="stylesheet" href="../css/footer.css">
     <meta name="theme-color" content="#d92e2e">
 </head>
+
 <body class="gastronomy">
 
     <!-- Header placeholder and loader -->
     <div id="site-header"></div>
 
+
+    <section>
+        <div>
+            <h2 class="title-page">SEVILLE GASTRONOMY</h2>
+        </div>
+    </section>
+
+
     <section class="gastronomy-section">
 
         <!-- Cards renderer container: JS will populate this -->
-        <div id="foodCardsContainer" class="cards-list" aria-live="polite"></div>
+        <div id="foodCardsContainer" class="food-list" aria-live="polite"></div>
 
     </section>
 
@@ -29,10 +39,11 @@
 
     <script src="../js/gastronomy.js"></script>
 
-     <!-- Footer placeholder and loader -->
+    <!-- Footer placeholder and loader -->
     <div id="site-footer"></div>
     <script src="../js/load-header.js" defer data-path="footer.html" data-target="site-footer"></script>
 
 
 </body>
+
 </html>
