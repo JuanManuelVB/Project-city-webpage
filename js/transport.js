@@ -35,23 +35,22 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const container = document.getElementById('featuresContainer');
+    const container = document.getElementById('transportContainer');
     if (!container) return;
 
     function createCard(item) {
         return `
-            <article class="feature-card">
-                <button class="close-btn" aria-label="Cerrar">&times;</button>
-                <div class="feature-img">
+            <article class="transport-card">
+                <div class="transport-img">
                     <img src="${item.img}" alt="${item.title}">
                 </div>
                 <h3>${item.title}</h3>
                 <p id="desc">${item.desc}</p>
-                <div class="feature-expanded-info">
+                <div class="transport-expanded-info">
                     <div class="expanded-content">
                         <p class="detail-text">${item.detailText}</p>
                         <img src="${item.detailImg}" alt="${item.title} detail" class="detail-img">
-                        <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn-official">
+                        <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn-web">
                             Visit Official Website →
                         </a>
                     </div>
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event delegation: expandir/contraer cards
     container.addEventListener('click', (e) => {
-        const card = e.target.closest('.feature-card');
+        const card = e.target.closest('.transport-card');
         const closeBtn = e.target.closest('.close-btn');
 
         if (!card) return;
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Cerrar otras cards expandidas
-        document.querySelectorAll('.feature-card.expanded').forEach(c => {
+        document.querySelectorAll('.transport-card.expanded').forEach(c => {
             if (c !== card) c.classList.remove('expanded');
         });
 
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cerrar al presionar ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.feature-card.expanded').forEach(c => {
+            document.querySelectorAll('.transport-card.expanded').forEach(c => {
                 c.classList.remove('expanded');
             });
         }
