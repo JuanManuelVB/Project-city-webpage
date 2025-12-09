@@ -5,8 +5,6 @@ body::before {
 .events-grid {
     display: grid;
     gap: 24px;
-    grid-template-columns: 1fr;
-    /*En móvil: 1 columna que ocupa todo el ancho disponible (1fr = 1 fracción) */
     padding: 16px;
 }
 
@@ -33,7 +31,7 @@ body::before {
     min-height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end;/*Manda el texto para abajo*/
     box-shadow: 0 6px 16px rgba(0,0,0,0.438);
     transition: box-shadow 0.3s ease, filter 0.3s ease;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -46,27 +44,18 @@ body::before {
 
 .card h3 {
     margin: 0 0 8px 0;
-    font-size: 1.3rem;
+    font-size: 21px;
 }
 
 .card p {
     margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Button oculto */
-.btn {
-    display: none;
-}
-
-/* Details */
-.details {
-    padding: 20px 100px;
-    max-width: 1000px;
-    margin: 0 auto; /* centrado horizontalmente*/
+    font-size: 14px;
 }
 
 .detail {
+    max-width: 1000px;
+    margin: 0 auto; /* centrado horizontalmente*/
+
     background: #ffffff;
     border-radius: 8px;
     padding: 24px;
@@ -93,6 +82,7 @@ body::before {
 }
 
 #calendar-link:hover {
-    background: #ac1010;
+    background: #bcb11b;
     color: #ffffff;
 }
+
