@@ -1,7 +1,6 @@
 
 body::before {
 	background-image: url("../img/gastronomy/Puente_de_Triana_4.webp");
-	opacity: 0.3;
 }
 
 .food-card {

@@ -1,10 +1,6 @@
 
-:root {
-    --transport-bg: url("../img/history/sevilla-pan.jpg"); 
-}
-
 body::before {
-    background-image: var(--transport-bg);
+    background-image: url("../img/history/sevilla-pan.jpg"); ;
 }
 
 

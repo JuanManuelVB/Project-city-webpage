@@ -10,15 +10,6 @@
   font-display: swap;
 }
 
-:root {
-  --accent: #c62828;
-  --bg: #fff;
-  --text: #222;
-  --muted: #666;
-  --capsule-bg: rgba(198, 40, 40, 0.15);
-  --capsule-border: rgba(198, 40, 40, 0.18);
-}
-
 /* Base header container */
 .site-header {
   background: transparent;
@@ -29,7 +20,7 @@
 
 /* Header element: fixed on top so it's always visible */
 header.site-header {
-  color: var(--header-text, #000);
+  color:  white;
   position: fixed;
   top: 0;
   left: 0;
@@ -40,7 +31,7 @@ header.site-header {
 
 /* For index page: make header text white by overriding the CSS variable */
 body.index header.site-header {
-  --header-text: #ffffff;
+  color: #ffffff;
 }
 
 /* Skip link (accessible) */
@@ -71,8 +62,8 @@ body.index header.site-header {
   padding: .6rem 1rem;
   justify-content: center;
   align-items: center;
-  background: var(--capsule-bg);
-  border: 1px solid var(--capsule-border);
+  background: rgba(198, 40, 40, 0.15);
+  border: rgba(198, 40, 40, 0.18);
   border-radius: 9999px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
@@ -90,6 +81,7 @@ body.index header.site-header {
 
 .site-title {
   line-height: 1;
+  color:#c62828
 }
 
 /* Navigation */
@@ -120,12 +112,12 @@ header.site-header .main-nav {
 
 .main-nav a:hover,
 .main-nav a:focus {
-  color: var(--accent);
+  color: #c62828;
   background: rgba(0, 0, 0, .04);
 }
 
 .main-nav a[aria-current="page"] {
-  color: var(--accent);
+  color: #c62828;
 }
 
 /* Botón hamburguesa (visible en móvil) */
@@ -161,7 +153,7 @@ header.site-header .main-nav {
 }
 
 /* Mobile behaviour: show hamburger, collapse desktop nav */
-@media (max-width: 680px) {
+@media screen and (max-width: 768px) {
 
   /* make the hamburger visible */
   .nav-toggle {
@@ -204,12 +196,12 @@ header.site-header .main-nav {
     display: block;
     padding: .75rem 1rem;
     border-radius: 0;
-    color: var(--text);
+    color:  #222222;
     background: transparent
   }
 
   .main-nav a+a {
-    border-top: 2px solid var(--accent)
+    border-top: 2px solid #c62828
   }
 
   /* CSS-only toggle: when checkbox is checked, show nav and animate bars */
@@ -236,13 +228,13 @@ header.site-header .main-nav {
   }
 
   body.index #nav-toggle:checked+.nav-toggle+.main-nav a {
-    color: var(--text) !important
+    color:  #222222 !important
   }
 }
 
 /* Visited links color */
 a:visited {
-  color: var(--accent) !important;
+  color: #c62828 !important;
 }
 
 /* When page has body.index, make header nav links white (override visited) */
@@ -253,8 +245,7 @@ body.index header.site-header .main-nav a:visited {
 
 body.index header.site-header .main-nav a:hover,
 body.index header.site-header .main-nav a:focus {
-  color: var(--accent);
+  color: #c62828;
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* End header.css */

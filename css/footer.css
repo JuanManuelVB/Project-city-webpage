@@ -75,7 +75,7 @@ body.index footer {
 }
 
 /* Responsive: apilar las columnas del footer en pantallas pequeñas */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .footer-columns{
         grid-template-columns: 1fr ;
     }
