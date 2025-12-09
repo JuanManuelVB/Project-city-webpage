@@ -4,13 +4,14 @@ body::before {
 }
 
 
-.features-container,
-.feature-card {
+.transports-container,
+.transport-card {
     position: relative;
     z-index: 1;
+    margin-bottom:200px;
 }
 
-/* FEATURES SECTION */
+/* transports SECTION */
 section {
     padding: 60px 60px 80px;
     display: flex;
@@ -20,7 +21,7 @@ section {
 }
 
 
-.features-container {
+.transport-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
@@ -28,14 +29,13 @@ section {
     width: 100%;
 }
 
-/* FEATURE CARD */
-.feature-card {
+/* transport CARD */
+.transport-card {
     background: #fff;
     padding: 36px 24px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,19 +45,18 @@ section {
     position: relative;
 }
 
-.feature-card:hover {
+.transport-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 36px rgba(255, 228, 138, 0.356);
 }
 
-.feature-card.expanded {
+.transport-card.expanded {
     padding: 24px 20px 32px;
-    min-height: auto;
-    z-index: 100;
+    z-index: 2;
     position: relative;
 }
 
-.feature-img {
+.transport-img {
     width: 96px;
     height: 96px;
     border-radius: 50%;
@@ -73,19 +72,19 @@ section {
 }
 
 /* imagen más grande cuando expandida */
-.feature-card.expanded .feature-img {
+.transport-card.expanded .transport-img {
     width: 120px;
     height: 120px;
 }
 
-.feature-img img {
+.transport-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.feature-card h3 {
+.transport-card h3 {
     font-size: 18px;
     font-weight: 700;
     margin: 0;
@@ -93,7 +92,7 @@ section {
     position: relative;
 }
 
-.feature-card p {
+.transport-card p {
     font-size: 14px;
     color: white;
     line-height: 1.6;
@@ -103,7 +102,7 @@ section {
 }
 
 /* Información expandida: POSICIONADA ABSOLUTAMENTE */
-.feature-expanded-info {
+.transport-expanded-info {
     /* siempre presente pero colapsada por transform */
     display: block;
     position: absolute;
@@ -119,7 +118,7 @@ section {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    z-index: 30;
+    z-index: 3;
     transform-origin: top center;
     transform: scaleY(0);
     opacity: 0;
@@ -129,7 +128,7 @@ section {
 }
 
 /* cuando la card está activa se despliega con suavidad */
-.feature-card.expanded .feature-expanded-info {
+.transport-card.expanded .transport-expanded-info {
     transform: scaleY(1);
     opacity: 1;
     pointer-events: auto;
@@ -144,7 +143,7 @@ section {
 
 /* en móvil el panel se vuelve estático (para evitar problemas de superposición) */
 @media (max-width: 768px) {
-    .feature-expanded-info {
+    .transport-expanded-info {
         position: static;
         transform: none;
         opacity: 1;
@@ -190,9 +189,8 @@ section {
     box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
-.btn-official {
+.btn-web {
     display: inline-block;
-    background: var(--accent);
     color: #fff;
     padding: 10px 20px;
     border-radius: 6px;
@@ -200,37 +198,12 @@ section {
     font-weight: 600;
     font-size: 14px;
     text-align: center;
-    transition: background 0.3s ease, transform 0.2s ease;
-    align-self: flex-start;
 }
 
-.btn-official:hover {
+.btn-web:hover {
     background: #ffd000;
     transform: translateX(4px);
     color: black
-}
-
-/* Botón cerrar */
-.close-btn {
-    display: none;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #ffffff;
-    transition: color 0.2s ease;
-    z-index: 10;
-}
-
-.close-btn:hover {
-    color: var(--accent);
-}
-
-.feature-card.expanded .close-btn {
-    display: block;
 }
 
 @keyframes slideDown {
@@ -244,26 +217,10 @@ section {
     }
 }
 
-/* BUTTON */
-.btn-view-all {
-    background: #1a1a2e;
-    color: #fff;
-    padding: 12px 40px;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn-view-all:hover {
-    background: #0f0f1a;
-}
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .features-container {
+    .transport-container {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -279,13 +236,13 @@ section {
         height: 140px;
     }
 
-    .feature-expanded-info {
+    .transport-expanded-info {
         min-width: 240px;
     }
 }
 
 @media (max-width: 768px) {
-    .features-container {
+    .transport-container {
         grid-template-columns: 1fr;
     }
 
@@ -301,22 +258,17 @@ section {
         padding: 24px 20px 48px;
     }
 
-    #slogan {
-        font-size: 14px;
-    }
-
     .detail-img {
         height: 120px;
     }
 
-    .feature-card.expanded .feature-img {
+    .transport-card.expanded .transport-img {
         width: 100px;
         height: 100px;
         z-index: 999;
     }
 
-    .feature-expanded-info {
-        position: static;
+    .transport-expanded-info {
         margin-top: 16px;
         box-shadow: none;
         padding: 16px 0 0;
