@@ -8,6 +8,7 @@ body::before {
 .feature-card {
     position: relative;
     z-index: 1;
+    margin-bottom:200px;
 }
 
 /* FEATURES SECTION */
@@ -119,7 +120,7 @@ section {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    z-index: 30;
+    z-index: 3;
     transform-origin: top center;
     transform: scaleY(0);
     opacity: 0;
