@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Convertir el HTML string en nodo real
         const wrapper = document.createElement("div");
         wrapper.innerHTML = createCard(item);
-        const card = wrapper.firstElementChild;
+        const card = wrapper.firstElementChild; //Devuelve el primer elemento hijo (la card)
 
         const toggle = () => {
             card.classList.toggle("open");
