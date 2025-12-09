@@ -1,9 +1,5 @@
-:root {
-    --history-bg: url("../img/events/eventos-bg.jpg");
-}
-
 body::before {
-    background-image: var(--history-bg);
+    background-image: url("../img/events/eventos-bg.jpg");
 }
 
 
