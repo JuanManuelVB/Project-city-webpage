@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Montecatini Pro';
-    src: local('Montecatini Pro Stretto Bold'), local('Montecatini-Pro-Stretto-Bold'),
-        url('MontecatiniPro-StrettoBold.woff2') format('woff2'),
-        url('MontecatiniPro-StrettoBold.woff') format('woff'),
-        url('MontecatiniPro-StrettoBold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-  }

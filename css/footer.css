@@ -1,48 +1,37 @@
-footer * {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', sans-serif;
-    box-sizing: border-box;
-}
-
-/*prueba*/
-/* Nota: la regla de `body` se ha eliminado de este archivo para evitar efectos globales.
-   Mantén los estilos de la página en un archivo global (por ejemplo `css/style.css`). */
-
 footer {
     width: 100%;
-    position: relative;
+    position: relative; /*Esto es para posicionar el footer respecto a su contenedor*/
     background: linear-gradient(to right,#2d0b00,#716c32);
-    color: #fff;
-    padding: 100px 0 30px;
-    border-top-left-radius: 75px;
-    border-top-right-radius: 75px;
+    color: #ffffff;/*Color del texto*/
+    padding: 75px 0 30px; /*Margen superior y inferior*/
+    border-top-left-radius: 75px;/*Borde superior izquierdo redondeado*/
+    border-top-right-radius: 75px;/*Borde superior derecho redondeado*/
     font-size: 13px;
-    line-height: 20px;
-    /*Desplazar el footer hacia ABAJO*/
-    margin-top: 50px;
+    line-height: 20px;/*Separacion entre lineas*/
 }
 
-/* Top area: four columns using CSS Grid */
+/* Parte superior, 4 columnas usando CSS Grid */
 .footer-columns{
     width: 85%;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem 2rem;
+    gap: 24px 32px;
     align-items: start;
 }
 
-/* Generic column inside footer */
-.footer-columns .col{
-    padding: 10px;
+.footer-columns .col ul{
+    /*Quitar puntitos lista*/
+    list-style: none;
 }
 
+/* Títulos: "Follow", "Explore" y "Contact" */
 .footer-columns .col h3{
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
 }
+
 
 .footer-columns .email-id{
     width: fit-content;
@@ -55,15 +44,15 @@ footer .footer-logo{
     margin-bottom: 30px;
 }
 
-/* Bottom row: copyright / legal links */
+/* Fila inferior: derechos de autor / enlaces legales */
 .footer-bottom{
     width: 85%;
-    margin: 2rem auto 0 auto;
+    margin: 32px auto 0 auto;
     border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 1rem;
+    padding-top: 16px;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 16px;
     align-items: center;
 }
 
@@ -75,9 +64,9 @@ footer .footer-logo{
     text-align: right;
 }
 
-/* Enlaces visitados en el footer: usar el color de acento o caer en rojo */
+/* Enlaces visitados en el footer: usar el color de acento rojo */
 footer a:visited {
-    color: var(--accent, #c62828) !important;
+    color: #c62828 !important;
 }
 
 /* Aplicar el empuje del footer solo en la página index (body.index) */
@@ -85,23 +74,9 @@ body.index footer {
     margin-top: -70px;
 }
 
-/* Responsive: stack footer columns on small screens */
-@media (max-width: 900px) {
+/* Responsive: apilar las columnas del footer en pantallas pequeñas */
+@media (max-width: 768px) {
     .footer-columns{
-        grid-template-columns: 1fr 1fr;
-    }
-    .footer-bottom{
-        flex-direction: column;
-        align-items: stretch;
-        text-align: left;
-    }
-    .footer-bottom-right{
-        text-align: left;
-    }
-}
-
-@media (max-width: 520px) {
-    .footer-columns{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr ;
     }
 }
