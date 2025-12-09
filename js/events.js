@@ -43,15 +43,16 @@ function createCard(event) {
 function renderCards() {
     const container = document.getElementById("events-grid");
     if (container) {
-        container.innerHTML = eventsData.map(createCard).join("");// Render all cards
+        container.innerHTML = eventsData.map(createCard).join("");// Renderiza
         
-        // Event delegation: scroll a la sección de detalles
+        // Delegación de eventos: permite hacer clic en cualquier tarjeta
         container.addEventListener('click', (e) => {
-            const panel = e.target.closest('.event-panel');
+            const panel = e.target.closest('.event-panel');//Busca qué elemento debe mostrarse (data-target="#idDelElemento")
             if (!panel) return;
             const target = document.querySelector(panel.dataset.target);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                //Hace scroll suave hacia ese elemento
             }
         });
     }

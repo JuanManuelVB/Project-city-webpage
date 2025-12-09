@@ -99,7 +99,7 @@ function renderCards() {
     if (container) {
         container.innerHTML = monumentsData.map(createCard).join("");
 
-        // Event delegation: abrir el link correspondiente en nueva pestaña
+        //Se abre el boton que contiene el link en una nueva pestaña
         container.addEventListener('click', (e) => {
             const btn = e.target.closest('.view-btn');
             if (!btn) return;

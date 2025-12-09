@@ -1,4 +1,4 @@
-const DEFAULT_GASTRONOMY_DATA = [
+const gastronomyData = [
     {
         id: 'tortilla',
         title: 'Spanish Omelette (Tortilla de Patatas)',
@@ -64,12 +64,6 @@ const DEFAULT_GASTRONOMY_DATA = [
     }
 ];
 
-// Use template-based renderer to preserve the original HTML structure
-function escapeHTML(str){
-    if(typeof str !== 'string') return '';
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-
 function createCard(item) { 
        return  `<div class="food-card" role="button" tabindex="0" aria-expanded="false">
                 <img src="${item.img}" alt="${item.alt}">
@@ -85,67 +79,30 @@ function createCard(item) {
             </div>`;
 }
 
-function renderCardsWithTemplate(container, data){
-    let html = '';
-    data.forEach(item => {
-        const title = escapeHTML(item.title || '');
-        const img = escapeHTML(item.img || '');
-        const alt = escapeHTML(item.alt || item.title || '');
-        const excerpt = escapeHTML(item.excerpt || '');
-        const ingredients = escapeHTML(item.ingredients || '');
-        const preparation = escapeHTML(item.preparation || '');
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector("#foodCardsContainer") 
+                   || document.querySelector(".food-list");
 
-        html += createCard({title, img, alt, excerpt, ingredients, preparation})    ;
-    });
+    if (!container) return;
 
-    container.innerHTML = html;
-    // Attach interactions to the newly created cards
-    const newCards = container.querySelectorAll('.food-card');
-    newCards.forEach(attachInteractions);
-}
+    container.innerHTML = "";
 
-function attachInteractions(card){
-    const details = card.querySelector('.card-details');
+    gastronomyData.forEach(item => {
 
-    const open = () => {
-        card.setAttribute('aria-expanded','true');
-        if(details) details.setAttribute('aria-hidden','false');
-    };
-    const close = () => {
-        card.setAttribute('aria-expanded','false');
-        if(details) details.setAttribute('aria-hidden','true');
-    };
-    const toggle = () => {
-        const opened = card.getAttribute('aria-expanded') === 'true';
-        if(opened) close(); else open();
-    };
+        // Convertir el HTML string en nodo real
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = createCard(item);
+        const card = wrapper.firstElementChild;
 
-    card.addEventListener('mouseenter', open);
-    card.addEventListener('mouseleave', close);
-    card.addEventListener('focusin', open);
-    card.addEventListener('focusout', close);
-    card.addEventListener('click', toggle);
-    card.addEventListener('keydown', function(e){
-        if(e.key === 'Enter' || e.key === ' '){
-            e.preventDefault();
-            toggle();
-        }
-    });
-}
+        const toggle = () => {
+            card.classList.toggle("open");
+        };
 
-function renderCards(container, data){
-    container.innerHTML = '';
-    data.forEach(item => {
-        const card = createCard(item);
-        attachInteractions(card);
+        // Interacciones simples
+        card.addEventListener("mouseenter", () => card.classList.add("open"));
+        card.addEventListener("mouseleave", () => card.classList.remove("open"));
+        card.addEventListener("click", toggle);
+
         container.appendChild(card);
     });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('#foodCardsContainer') || document.querySelector('.food-list');
-    if(!container) return;
-    const data = (window.GASTRONOMY_DATA && Array.isArray(window.GASTRONOMY_DATA)) ? window.GASTRONOMY_DATA : DEFAULT_GASTRONOMY_DATA;
-    // Use the template renderer to preserve original markup
-    renderCardsWithTemplate(container, data);
 });
