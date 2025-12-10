@@ -48,10 +48,10 @@ const monumentsData = [
         url: "https://www.parlamentodeandalucia.es/servicio-de-publicaciones-oficiales"
     },
     {
-        title: "Archivo de Indias",
-        location: "Plaza del Triunfo",
-        img: "../img/monuments/archivo-indias.jpg",
-        url: "https://www.mecd.gob.es/cultura-mecd/areas-cultura/archivos/mc/archivos/aid/index.html"
+        title: "Ayuntamiento de Sevilla",
+        location: "Plaza Nueva",
+        img: "../img/monuments/ayuntamiento.jpg",
+        url: "https://www.sevilla.org/"
     },
     {
         title: "Casa de Pilatos",
