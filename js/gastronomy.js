@@ -79,8 +79,8 @@ function createCard(item) {
             </div>`;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector("#foodCardsContainer") 
+document.addEventListener("DOMContentLoaded", () => {   // Esperar a que el DOM esté completamente cargado
+    const container = document.querySelector("#foodCardsContainer")     
                    || document.querySelector(".food-list");
 
     if (!container) return;
