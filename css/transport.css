@@ -127,6 +127,7 @@ section {
 .transport-card.expanded .transport-expanded-info {
     transform: scaleY(1);
     opacity: 1;
+    pointer-events: auto; /* permitir clicks en enlaces y botones cuando está expandido */
 }
 
 /* contenido interno mantiene su layout normal */
