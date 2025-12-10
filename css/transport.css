@@ -171,13 +171,14 @@ section {
 
 .btn-web {
     display: inline-block;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     text-align: center;
+    background: #841c1c;
 }
 
 .btn-web:hover {

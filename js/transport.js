@@ -64,15 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event delegation: expandir/contraer cards
     container.addEventListener('click', (e) => {
+        if (e.target.closest('.btn-web')) return; // Ignorar clics en el botón de enlace
             const card = e.target.closest('.transport-card');
-            const closeBtn = e.target.closest('.close-btn');
+            const btn = e.target.closest('.btn-web');
 
             if (!card) return;
 
             // Si clickea en el botón cerrar, contraer
-            if (closeBtn) {
+            if (btn) {
                 e.stopPropagation();
-                card.classList.remove('expanded');
                 return;
             }
 
