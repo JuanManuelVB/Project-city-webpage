@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monuments - Seville</title>
+    <link rel="stylesheet" href="../css/monuments.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="icon" href="../img/escudo.jpeg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="../img/escudo.jpeg">
+    <link rel="stylesheet" href="../css/footer.css">
+    <meta name="theme-color" content="#d92e2e">
+</head>
+
+<body>
+
+    <!-- Header (shared) -->
+     <div id="site-header"></div>
+     <script src="../js/load-header.js" defer data-path="header.html" data-target="site-header"></script>
+
+   
+    <!-- Link to map -->
+    <a href="#monuments-map" class="circular-link">
+        <div class="circular-image-top">
+            <img src="../img/monuments/mapa-sevilla.png" alt="Sevilla">
+        </div>
+    </a>
+
+    <div> 
+        <h2 class="title-page">EXPLORE SEVILLE!</h2>
+    </div>
+
+
+    <section class="discover">
+        <h1 class="subtitle-page"  >Discover the beauty of Seville's monuments!</h1>
+            <p class="slogan"> And much more... </p>
+        <div class="cards" id="travelCards"></div>
+    </section>
+
+    <script src="../js/monuments.js"></script>
+
+    <section>
+        <div id="monuments-map">
+            <h3 id="monuments-map-title">Here you can find a map!</h3>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1jjLfLN9MLgw3_l5envCtANrG-rY4TgwW" width="100%"
+                height="480" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa de monumentos de Sevilla">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer placeholder and loader -->
+    <div id="site-footer"></div>
+    <script src="../js/load-header.js" defer data-path="footer.html" data-target="site-footer"></script>
+
+
+</body>
+
+</html>

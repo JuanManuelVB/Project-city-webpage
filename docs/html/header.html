@@ -1,0 +1,37 @@
+<!-- header.html - Cabecera limpia y accesible en forma de cápsula translúcida roja -->
+<header class="site-header" role="banner">
+
+    <!-- Contenedor en forma de cápsula -->
+    <div class="header-inner">
+        <!-- Marca (logo + título). Mantener como bloque independiente -->
+        <div class="brand">
+            <a href="../html/index.html" class="logo" aria-label="Página principal - Ciudad de Sevilla">
+                <img src="../img/logo.png"  alt="Logotipo de la Ciudad de Sevilla" class="logo">
+            </a>
+            <span class="site-title">City of Seville<br>Official website</span>
+            
+        </div>
+
+        <!-- Versión móvil: control checkbox + label para no necesitar JS -->
+        <input id="nav-toggle" class="nav-toggle-checkbox" type="checkbox">
+        <label class="nav-toggle" for="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+
+        <!-- Navegación principal -->
+        <nav id="global-navigation" class="main-nav" role="navigation" aria-label="Navegación principal">
+            <ul>
+                <li><a href="../html/index.html" aria-current="page">Home</a></li>
+                <li><a href="../html/gastronomy.html">Gastronomy</a></li>
+                <li><a href="../html/history.html">History</a></li>
+                <li><a href="../html/monuments.html">Monuments</a></li>
+                <li><a href="../html/events.html">Events</a></li>
+                <li><a href="../html/transport.html">Transport</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
